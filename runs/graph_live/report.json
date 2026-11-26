@@ -1,0 +1,78 @@
+{
+  "mode": "live-model",
+  "model": "deepseek-chat",
+  "cases": [
+    {
+      "case": "complete_brief",
+      "status": "draft_ready",
+      "thread_id": "6dcf4ce1d3ee4d799cfe8737c0ba8e9c",
+      "models": [
+        "deepseek-chat"
+      ],
+      "roles": [
+        "customer_service",
+        "supervisor",
+        "designer",
+        "supervisor",
+        "customer_service"
+      ],
+      "pptx": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\graph_live\\order_2aaca86a90.pptx",
+      "state_file": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\graph_live\\order_40e021eeb9.json"
+    },
+    {
+      "case": "customer_revision",
+      "status": "draft_ready",
+      "thread_id": "6dcf4ce1d3ee4d799cfe8737c0ba8e9c",
+      "models": [
+        "deepseek-chat"
+      ],
+      "roles": [
+        "customer_service",
+        "supervisor",
+        "designer",
+        "supervisor",
+        "customer_service",
+        "customer_service",
+        "supervisor",
+        "designer",
+        "supervisor",
+        "customer_service"
+      ],
+      "pptx": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\graph_live\\order_cb4bab66f6.pptx",
+      "state_file": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\graph_live\\order_591a31d31f.json"
+    },
+    {
+      "case": "missing_material",
+      "status": "needs_clarification",
+      "thread_id": "1cdfd985d189464387ead6764a881ac3",
+      "models": [
+        "deepseek-chat"
+      ],
+      "roles": [
+        "customer_service",
+        "supervisor"
+      ],
+      "pptx": null,
+      "state_file": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\graph_live\\order_ac79aed36e.json"
+    },
+    {
+      "case": "clarification_resumed",
+      "status": "draft_ready",
+      "thread_id": "1cdfd985d189464387ead6764a881ac3",
+      "models": [
+        "deepseek-chat"
+      ],
+      "roles": [
+        "customer_service",
+        "supervisor",
+        "customer_service",
+        "supervisor",
+        "designer",
+        "supervisor",
+        "customer_service"
+      ],
+      "pptx": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\graph_live\\order_908a680fb6.pptx",
+      "state_file": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\graph_live\\order_f022711bba.json"
+    }
+  ]
+}

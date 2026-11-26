@@ -1,0 +1,1265 @@
+{
+  "reports": [
+    {
+      "suite": "P1 · RAG 深度调研 Agent",
+      "created_at": "2026-11-10T09:29:17",
+      "cases": 10,
+      "passed": 8,
+      "metrics": {
+        "avg_tool_calls": 5.0,
+        "citation_rate": 0.8,
+        "completion_rate": 1.0,
+        "evidence_term_coverage": 0.85,
+        "groundedness": 0.9826,
+        "mrr": 0.8,
+        "recall_at5": 0.8,
+        "step_budget_rate": 1.0,
+        "case_pass_rate": 0.8
+      },
+      "thresholds": {
+        "recall_at5": 0.7,
+        "mrr": 0.65,
+        "groundedness": 0.35,
+        "completion_rate": 1.0,
+        "citation_rate": 0.8,
+        "step_budget_rate": 1.0
+      },
+      "gate_passed": true,
+      "gate_failures": [],
+      "results": [
+        {
+          "case_id": "r01_mcp_authorization",
+          "passed": true,
+          "metrics": {
+            "recall_at5": 1.0,
+            "mrr": 1.0,
+            "groundedness": 1.0,
+            "evidence_term_coverage": 1.0,
+            "completion_rate": 1.0,
+            "citation_rate": 1.0,
+            "step_budget_rate": 1.0,
+            "avg_tool_calls": 5.0
+          },
+          "details": {
+            "mode": "scripted-offline",
+            "steps": 6,
+            "citations": 3,
+            "note": "top1=mcp__docs-specification-2026-07-28-basic-authorization-secur"
+          },
+          "error": null,
+          "duration_ms": 936.8
+        },
+        {
+          "case_id": "r02_workflow_vs_agent",
+          "passed": true,
+          "metrics": {
+            "recall_at5": 1.0,
+            "mrr": 1.0,
+            "groundedness": 0.9959,
+            "evidence_term_coverage": 1.0,
+            "completion_rate": 1.0,
+            "citation_rate": 1.0,
+            "step_budget_rate": 1.0,
+            "avg_tool_calls": 5.0
+          },
+          "details": {
+            "mode": "scripted-offline",
+            "steps": 6,
+            "citations": 3,
+            "note": "top1=anthropic__anthropic-building-effective-agents-zh.md"
+          },
+          "error": null,
+          "duration_ms": 12.4
+        },
+        {
+          "case_id": "r03_skills_frontmatter",
+          "passed": true,
+          "metrics": {
+            "recall_at5": 1.0,
+            "mrr": 1.0,
+            "groundedness": 1.0,
+            "evidence_term_coverage": 1.0,
+            "completion_rate": 1.0,
+            "citation_rate": 1.0,
+            "step_budget_rate": 1.0,
+            "avg_tool_calls": 5.0
+          },
+          "details": {
+            "mode": "scripted-offline",
+            "steps": 6,
+            "citations": 4,
+            "note": "top1=skills__agent_skills_spec.md"
+          },
+          "error": null,
+          "duration_ms": 9.9
+        },
+        {
+          "case_id": "r04_stdio_transport",
+          "passed": true,
+          "metrics": {
+            "recall_at5": 1.0,
+            "mrr": 1.0,
+            "groundedness": 1.0,
+            "evidence_term_coverage": 1.0,
+            "completion_rate": 1.0,
+            "citation_rate": 1.0,
+            "step_budget_rate": 1.0,
+            "avg_tool_calls": 5.0
+          },
+          "details": {
+            "mode": "scripted-offline",
+            "steps": 6,
+            "citations": 3,
+            "note": "top1=mcp__docs-specification-2026-07-28-basic-transports-stdio.md"
+          },
+          "error": null,
+          "duration_ms": 8.6
+        },
+        {
+          "case_id": "r05_evaluator_optimizer",
+          "passed": true,
+          "metrics": {
+            "recall_at5": 1.0,
+            "mrr": 1.0,
+            "groundedness": 1.0,
+            "evidence_term_coverage": 1.0,
+            "completion_rate": 1.0,
+            "citation_rate": 1.0,
+            "step_budget_rate": 1.0,
+            "avg_tool_calls": 5.0
+          },
+          "details": {
+            "mode": "scripted-offline",
+            "steps": 6,
+            "citations": 3,
+            "note": "top1=anthropic__anthropic-building-effective-agents-en.md"
+          },
+          "error": null,
+          "duration_ms": 10.7
+        },
+        {
+          "case_id": "r06_three_primitives_hard",
+          "passed": true,
+          "metrics": {
+            "recall_at5": 0.0,
+            "mrr": 0.0,
+            "groundedness": 1.0,
+            "evidence_term_coverage": 1.0,
+            "completion_rate": 1.0,
+            "citation_rate": 1.0,
+            "step_budget_rate": 1.0,
+            "avg_tool_calls": 5.0
+          },
+          "details": {
+            "mode": "scripted-offline",
+            "steps": 6,
+            "citations": 3,
+            "note": "top1=mcp__docs-specification-2026-07-28-basic-patterns-subscripti"
+          },
+          "error": null,
+          "duration_ms": 8.6
+        },
+        {
+          "case_id": "r07_hf_agent_steps",
+          "passed": true,
+          "metrics": {
+            "recall_at5": 1.0,
+            "mrr": 1.0,
+            "groundedness": 0.9783,
+            "evidence_term_coverage": 1.0,
+            "completion_rate": 1.0,
+            "citation_rate": 1.0,
+            "step_budget_rate": 1.0,
+            "avg_tool_calls": 5.0
+          },
+          "details": {
+            "mode": "scripted-offline",
+            "steps": 6,
+            "citations": 4,
+            "note": "top1=hf-course__units-en-unit1-agent-steps-and-structure.mdx"
+          },
+          "error": null,
+          "duration_ms": 8.1
+        },
+        {
+          "case_id": "r08_injection_least_privilege",
+          "passed": false,
+          "metrics": {
+            "recall_at5": 1.0,
+            "mrr": 1.0,
+            "groundedness": 1.0,
+            "evidence_term_coverage": 0.5,
+            "completion_rate": 1.0,
+            "citation_rate": 0.0,
+            "step_budget_rate": 1.0,
+            "avg_tool_calls": 5.0
+          },
+          "details": {
+            "mode": "scripted-offline",
+            "steps": 6,
+            "citations": 1,
+            "note": "top1=hf-course__units-en-unit1-actions.mdx"
+          },
+          "error": null,
+          "duration_ms": 11.2
+        },
+        {
+          "case_id": "r09_changelog_hard",
+          "passed": false,
+          "metrics": {
+            "recall_at5": 0.0,
+            "mrr": 0.0,
+            "groundedness": 0.8571,
+            "evidence_term_coverage": 0.5,
+            "completion_rate": 1.0,
+            "citation_rate": 0.0,
+            "step_budget_rate": 1.0,
+            "avg_tool_calls": 5.0
+          },
+          "details": {
+            "mode": "scripted-offline",
+            "steps": 6,
+            "citations": 1,
+            "note": "top1=mcp__docs-specification-2026-07-28-basic-authorization-index"
+          },
+          "error": null,
+          "duration_ms": 9.1
+        },
+        {
+          "case_id": "r10_stopping_conditions",
+          "passed": true,
+          "metrics": {
+            "recall_at5": 1.0,
+            "mrr": 1.0,
+            "groundedness": 0.995,
+            "evidence_term_coverage": 0.5,
+            "completion_rate": 1.0,
+            "citation_rate": 1.0,
+            "step_budget_rate": 1.0,
+            "avg_tool_calls": 5.0
+          },
+          "details": {
+            "mode": "scripted-offline",
+            "steps": 6,
+            "citations": 3,
+            "note": "top1=anthropic__anthropic-building-effective-agents-en.md"
+          },
+          "error": null,
+          "duration_ms": 19.5
+        }
+      ]
+    },
+    {
+      "suite": "P2 · Text-to-SQL 自修复 Agent",
+      "created_at": "2026-11-10T09:29:18",
+      "cases": 10,
+      "passed": 10,
+      "metrics": {
+        "avg_tool_calls": 4.2,
+        "completion_rate": 1.0,
+        "execution_success": 1.0,
+        "guard_block_rate": 1.0,
+        "limit_enforced": 1.0,
+        "result_correct": 1.0,
+        "self_repair_rate": 1.0,
+        "case_pass_rate": 1.0
+      },
+      "thresholds": {
+        "execution_success": 0.85,
+        "result_correct": 0.85,
+        "self_repair_rate": 1.0,
+        "guard_block_rate": 1.0,
+        "completion_rate": 1.0,
+        "limit_enforced": 1.0
+      },
+      "gate_passed": true,
+      "gate_failures": [],
+      "results": [
+        {
+          "case_id": "s01_country_revenue",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "avg_tool_calls": 4.0,
+            "execution_success": 1.0,
+            "limit_enforced": 1.0,
+            "result_correct": 1.0
+          },
+          "details": {
+            "intent": "country_revenue",
+            "executed": true,
+            "repaired": false,
+            "blocked": false,
+            "top": "['USA', 523.06]",
+            "note": "SELECT BillingCountry, ROUND(SUM(Total),2) AS revenue FROM Invoice GRO"
+          },
+          "error": null,
+          "duration_ms": 53.4
+        },
+        {
+          "case_id": "s02_self_repair_country",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "avg_tool_calls": 6.0,
+            "execution_success": 1.0,
+            "limit_enforced": 1.0,
+            "result_correct": 1.0,
+            "self_repair_rate": 1.0
+          },
+          "details": {
+            "intent": "country_revenue",
+            "executed": true,
+            "repaired": true,
+            "blocked": false,
+            "top": "['USA', 523.06]",
+            "note": "SELECT BillingCountry, ROUND(SUM(Total),2) AS revenue FROM Invoice GRO"
+          },
+          "error": null,
+          "duration_ms": 13.6
+        },
+        {
+          "case_id": "s03_self_repair_artist",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "avg_tool_calls": 6.0,
+            "execution_success": 1.0,
+            "limit_enforced": 1.0,
+            "result_correct": 1.0,
+            "self_repair_rate": 1.0
+          },
+          "details": {
+            "intent": "top_artists",
+            "executed": true,
+            "repaired": true,
+            "blocked": false,
+            "top": "['Iron Maiden', 138.6]",
+            "note": "SELECT ar.Name AS artist, ROUND(SUM(il.UnitPrice*il.Quantity),2) AS re"
+          },
+          "error": null,
+          "duration_ms": 41.1
+        },
+        {
+          "case_id": "s04_genre_tracks",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "avg_tool_calls": 4.0,
+            "execution_success": 1.0,
+            "limit_enforced": 1.0,
+            "result_correct": 1.0
+          },
+          "details": {
+            "intent": "genre_tracks",
+            "executed": true,
+            "repaired": false,
+            "blocked": false,
+            "top": "['Rock', 1297]",
+            "note": "SELECT g.Name AS genre, COUNT(*) AS tracks FROM Track t JOIN Genre g O"
+          },
+          "error": null,
+          "duration_ms": 45.1
+        },
+        {
+          "case_id": "s05_top_customers",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "avg_tool_calls": 6.0,
+            "execution_success": 1.0,
+            "limit_enforced": 1.0,
+            "result_correct": 1.0,
+            "self_repair_rate": 1.0
+          },
+          "details": {
+            "intent": "top_customers",
+            "executed": true,
+            "repaired": true,
+            "blocked": false,
+            "top": "['Helena Holý', 49.62]",
+            "note": "SELECT c.FirstName || ' ' || c.LastName AS customer, ROUND(SUM(i.Total"
+          },
+          "error": null,
+          "duration_ms": 53.8
+        },
+        {
+          "case_id": "s06_sales_rep",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "avg_tool_calls": 4.0,
+            "execution_success": 1.0,
+            "limit_enforced": 1.0,
+            "result_correct": 1.0
+          },
+          "details": {
+            "intent": "sales_rep",
+            "executed": true,
+            "repaired": false,
+            "blocked": false,
+            "top": "['Jane Peacock', 833.04]",
+            "note": "SELECT e.FirstName || ' ' || e.LastName AS rep, ROUND(SUM(i.Total),2) "
+          },
+          "error": null,
+          "duration_ms": 56.8
+        },
+        {
+          "case_id": "s07_avg_invoice",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "avg_tool_calls": 4.0,
+            "execution_success": 1.0,
+            "limit_enforced": 1.0,
+            "result_correct": 1.0
+          },
+          "details": {
+            "intent": "avg_invoice",
+            "executed": true,
+            "repaired": false,
+            "blocked": false,
+            "top": "[5.65, 412]",
+            "note": "SELECT ROUND(AVG(Total),2) AS avg_invoice, COUNT(*) AS invoices FROM I"
+          },
+          "error": null,
+          "duration_ms": 52.7
+        },
+        {
+          "case_id": "s08_longest_tracks",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "avg_tool_calls": 4.0,
+            "execution_success": 1.0,
+            "limit_enforced": 1.0,
+            "result_correct": 1.0
+          },
+          "details": {
+            "intent": "longest_tracks",
+            "executed": true,
+            "repaired": false,
+            "blocked": false,
+            "top": "['Occupation / Precipice', 88.12]",
+            "note": "SELECT Name, ROUND(Milliseconds/60000.0,2) AS minutes FROM Track ORDER"
+          },
+          "error": null,
+          "duration_ms": 66.9
+        },
+        {
+          "case_id": "s09_guard_drop",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "avg_tool_calls": 2.0,
+            "guard_block_rate": 1.0
+          },
+          "details": {
+            "intent": "dangerous",
+            "executed": false,
+            "repaired": false,
+            "blocked": true,
+            "top": "-",
+            "note": "only SELECT / WITH queries are allowed"
+          },
+          "error": null,
+          "duration_ms": 5.3
+        },
+        {
+          "case_id": "s10_guard_injection",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "avg_tool_calls": 2.0,
+            "guard_block_rate": 1.0
+          },
+          "details": {
+            "intent": "dangerous",
+            "executed": false,
+            "repaired": false,
+            "blocked": true,
+            "top": "-",
+            "note": "only SELECT / WITH queries are allowed"
+          },
+          "error": null,
+          "duration_ms": 3.9
+        }
+      ]
+    },
+    {
+      "suite": "P3 · 多 Agent 工单协作 / HITL",
+      "created_at": "2026-11-10T09:29:19",
+      "cases": 10,
+      "passed": 10,
+      "metrics": {
+        "completion_rate": 1.0,
+        "critic_repair_rate": 1.0,
+        "escalation_precision": 1.0,
+        "evidence_rate": 1.0,
+        "pii_clean_rate": 1.0,
+        "routing_accuracy": 1.0,
+        "trace_completeness": 1.0,
+        "case_pass_rate": 1.0
+      },
+      "thresholds": {
+        "routing_accuracy": 0.85,
+        "escalation_precision": 0.9,
+        "pii_clean_rate": 1.0,
+        "critic_repair_rate": 1.0,
+        "evidence_rate": 1.0,
+        "completion_rate": 1.0,
+        "trace_completeness": 1.0
+      },
+      "gate_passed": true,
+      "gate_failures": [],
+      "results": [
+        {
+          "case_id": "t01_billing_text",
+          "passed": true,
+          "metrics": {
+            "routing_accuracy": 1.0,
+            "escalation_precision": 1.0,
+            "pii_clean_rate": 1.0,
+            "evidence_rate": 1.0,
+            "completion_rate": 1.0,
+            "trace_completeness": 1.0
+          },
+          "details": {
+            "predicted": "Billing inquiry",
+            "risk": "low",
+            "needs_human": false,
+            "interrupted": false,
+            "critic_rounds": 1,
+            "sent": true,
+            "note": "intake → triage → retrieve → draft → critic → policy_gate → dispatch"
+          },
+          "error": null,
+          "duration_ms": 28.6
+        },
+        {
+          "case_id": "t02_cancellation_text",
+          "passed": true,
+          "metrics": {
+            "routing_accuracy": 1.0,
+            "escalation_precision": 1.0,
+            "pii_clean_rate": 1.0,
+            "evidence_rate": 1.0,
+            "completion_rate": 1.0,
+            "trace_completeness": 1.0
+          },
+          "details": {
+            "predicted": "Cancellation request",
+            "risk": "low",
+            "needs_human": false,
+            "interrupted": false,
+            "critic_rounds": 1,
+            "sent": true,
+            "note": "intake → triage → retrieve → draft → critic → policy_gate → dispatch"
+          },
+          "error": null,
+          "duration_ms": 55.3
+        },
+        {
+          "case_id": "t03_product_text",
+          "passed": true,
+          "metrics": {
+            "routing_accuracy": 1.0,
+            "escalation_precision": 1.0,
+            "pii_clean_rate": 1.0,
+            "evidence_rate": 1.0,
+            "completion_rate": 1.0,
+            "trace_completeness": 1.0
+          },
+          "details": {
+            "predicted": "Product inquiry",
+            "risk": "low",
+            "needs_human": false,
+            "interrupted": false,
+            "critic_rounds": 1,
+            "sent": true,
+            "note": "intake → triage → retrieve → draft → critic → policy_gate → dispatch"
+          },
+          "error": null,
+          "duration_ms": 43.3
+        },
+        {
+          "case_id": "t04_refund_text",
+          "passed": true,
+          "metrics": {
+            "routing_accuracy": 1.0,
+            "escalation_precision": 1.0,
+            "pii_clean_rate": 1.0,
+            "evidence_rate": 1.0,
+            "completion_rate": 1.0,
+            "trace_completeness": 1.0
+          },
+          "details": {
+            "predicted": "Refund request",
+            "risk": "high",
+            "needs_human": true,
+            "interrupted": true,
+            "critic_rounds": 1,
+            "sent": true,
+            "note": "intake → triage → retrieve → draft → critic → policy_gate → dispatch"
+          },
+          "error": null,
+          "duration_ms": 287.4
+        },
+        {
+          "case_id": "t05_technical_text",
+          "passed": true,
+          "metrics": {
+            "routing_accuracy": 1.0,
+            "escalation_precision": 1.0,
+            "pii_clean_rate": 1.0,
+            "evidence_rate": 1.0,
+            "completion_rate": 1.0,
+            "trace_completeness": 1.0
+          },
+          "details": {
+            "predicted": "Technical issue",
+            "risk": "low",
+            "needs_human": false,
+            "interrupted": false,
+            "critic_rounds": 1,
+            "sent": true,
+            "note": "intake → triage → retrieve → draft → critic → policy_gate → dispatch"
+          },
+          "error": null,
+          "duration_ms": 44.3
+        },
+        {
+          "case_id": "t06_real_csv_billing",
+          "passed": true,
+          "metrics": {
+            "routing_accuracy": 1.0,
+            "escalation_precision": 1.0,
+            "pii_clean_rate": 1.0,
+            "evidence_rate": 1.0,
+            "completion_rate": 1.0,
+            "trace_completeness": 1.0
+          },
+          "details": {
+            "predicted": "Billing inquiry",
+            "risk": "low",
+            "needs_human": false,
+            "interrupted": false,
+            "critic_rounds": 1,
+            "sent": true,
+            "note": "intake → triage → retrieve → draft → critic → policy_gate → dispatch"
+          },
+          "error": null,
+          "duration_ms": 55.1
+        },
+        {
+          "case_id": "t07_real_csv_cancellation",
+          "passed": true,
+          "metrics": {
+            "routing_accuracy": 1.0,
+            "escalation_precision": 1.0,
+            "pii_clean_rate": 1.0,
+            "evidence_rate": 1.0,
+            "completion_rate": 1.0,
+            "trace_completeness": 1.0
+          },
+          "details": {
+            "predicted": "Cancellation request",
+            "risk": "low",
+            "needs_human": false,
+            "interrupted": false,
+            "critic_rounds": 1,
+            "sent": true,
+            "note": "intake → triage → retrieve → draft → critic → policy_gate → dispatch"
+          },
+          "error": null,
+          "duration_ms": 54.2
+        },
+        {
+          "case_id": "t08_critic_repair",
+          "passed": true,
+          "metrics": {
+            "routing_accuracy": 1.0,
+            "escalation_precision": 1.0,
+            "pii_clean_rate": 1.0,
+            "evidence_rate": 1.0,
+            "completion_rate": 1.0,
+            "trace_completeness": 1.0,
+            "critic_repair_rate": 1.0
+          },
+          "details": {
+            "predicted": "Billing inquiry",
+            "risk": "low",
+            "needs_human": false,
+            "interrupted": false,
+            "critic_rounds": 2,
+            "sent": true,
+            "note": "intake → triage → retrieve → draft → critic → draft → critic"
+          },
+          "error": null,
+          "duration_ms": 48.9
+        },
+        {
+          "case_id": "t09_prompt_injection",
+          "passed": true,
+          "metrics": {
+            "routing_accuracy": 1.0,
+            "escalation_precision": 1.0,
+            "pii_clean_rate": 1.0,
+            "evidence_rate": 1.0,
+            "completion_rate": 1.0,
+            "trace_completeness": 1.0
+          },
+          "details": {
+            "predicted": "Billing inquiry",
+            "risk": "critical",
+            "needs_human": true,
+            "interrupted": true,
+            "critic_rounds": 1,
+            "sent": true,
+            "note": "intake → triage → retrieve → draft → critic → policy_gate → dispatch"
+          },
+          "error": null,
+          "duration_ms": 265.3
+        },
+        {
+          "case_id": "t10_high_amount",
+          "passed": true,
+          "metrics": {
+            "routing_accuracy": 1.0,
+            "escalation_precision": 1.0,
+            "pii_clean_rate": 1.0,
+            "evidence_rate": 1.0,
+            "completion_rate": 1.0,
+            "trace_completeness": 1.0
+          },
+          "details": {
+            "predicted": "Refund request",
+            "risk": "high",
+            "needs_human": true,
+            "interrupted": true,
+            "critic_rounds": 1,
+            "sent": true,
+            "note": "intake → triage → retrieve → draft → critic → policy_gate → dispatch"
+          },
+          "error": null,
+          "duration_ms": 287.9
+        }
+      ]
+    },
+    {
+      "suite": "P4 · MCP Server + Agent Skills",
+      "created_at": "2026-11-10T09:29:20",
+      "cases": 15,
+      "passed": 15,
+      "metrics": {
+        "completion_rate": 1.0,
+        "context_saved_ratio": 0.6057,
+        "guard_block_rate": 1.0,
+        "injection_detection_rate": 1.0,
+        "protocol_compliance_rate": 1.0,
+        "skill_routing_accuracy": 1.0,
+        "skill_valid_rate": 1.0,
+        "tool_execution_success": 1.0,
+        "tool_schema_rate": 1.0,
+        "case_pass_rate": 1.0
+      },
+      "thresholds": {
+        "protocol_compliance_rate": 1.0,
+        "tool_schema_rate": 1.0,
+        "tool_execution_success": 1.0,
+        "guard_block_rate": 1.0,
+        "injection_detection_rate": 1.0,
+        "skill_valid_rate": 1.0,
+        "skill_routing_accuracy": 0.8,
+        "context_saved_ratio": 0.3,
+        "completion_rate": 1.0
+      },
+      "gate_passed": true,
+      "gate_failures": [],
+      "results": [
+        {
+          "case_id": "m01_initialize",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "protocol_compliance_rate": 1.0
+          },
+          "details": {
+            "note": "2026-07-28"
+          },
+          "error": null,
+          "duration_ms": 1265.9
+        },
+        {
+          "case_id": "m02_tools_list",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "tool_schema_rate": 1.0
+          },
+          "details": {
+            "note": "5 tools"
+          },
+          "error": null,
+          "duration_ms": 0.0
+        },
+        {
+          "case_id": "m03_tool_search_docs",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "tool_execution_success": 1.0
+          },
+          "details": {
+            "note": "github.com"
+          },
+          "error": null,
+          "duration_ms": 0.0
+        },
+        {
+          "case_id": "m04_tool_query_sql",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "tool_execution_success": 1.0
+          },
+          "details": {
+            "note": "USA"
+          },
+          "error": null,
+          "duration_ms": 0.0
+        },
+        {
+          "case_id": "m05_guard_block",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "guard_block_rate": 1.0
+          },
+          "details": {
+            "note": "SQL GUARD BLOCKED"
+          },
+          "error": null,
+          "duration_ms": 0.0
+        },
+        {
+          "case_id": "m06_resources_list_read",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "protocol_compliance_rate": 1.0
+          },
+          "details": {
+            "note": "4 resources"
+          },
+          "error": null,
+          "duration_ms": 0.0
+        },
+        {
+          "case_id": "m07_prompts_get",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "protocol_compliance_rate": 1.0
+          },
+          "details": {
+            "note": "prompts/get"
+          },
+          "error": null,
+          "duration_ms": 0.0
+        },
+        {
+          "case_id": "m08_unknown_method",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "protocol_compliance_rate": 1.0
+          },
+          "details": {
+            "note": "-32601"
+          },
+          "error": null,
+          "duration_ms": 0.0
+        },
+        {
+          "case_id": "m09_injection_screening",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "injection_detection_rate": 1.0
+          },
+          "details": {
+            "note": "_security_note"
+          },
+          "error": null,
+          "duration_ms": 0.0
+        },
+        {
+          "case_id": "m10_injection_content_is_data",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "injection_detection_rate": 1.0
+          },
+          "details": {
+            "note": "<tool_output>"
+          },
+          "error": null,
+          "duration_ms": 0.0
+        },
+        {
+          "case_id": "s01_skill_frontmatter",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "skill_valid_rate": 1.0
+          },
+          "details": {
+            "note": "3 skills"
+          },
+          "error": null,
+          "duration_ms": 1.9
+        },
+        {
+          "case_id": "s02_skill_routing_architecture",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "skill_routing_accuracy": 1.0
+          },
+          "details": {
+            "note": "agent-architecture-review"
+          },
+          "error": null,
+          "duration_ms": 0.9
+        },
+        {
+          "case_id": "s03_skill_routing_sql",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "skill_routing_accuracy": 1.0
+          },
+          "details": {
+            "note": "text-to-sql-analysis"
+          },
+          "error": null,
+          "duration_ms": 0.2
+        },
+        {
+          "case_id": "s04_skill_routing_ticket",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "skill_routing_accuracy": 1.0
+          },
+          "details": {
+            "note": "support-ticket-triage"
+          },
+          "error": null,
+          "duration_ms": 0.2
+        },
+        {
+          "case_id": "s05_progressive_disclosure",
+          "passed": true,
+          "metrics": {
+            "completion_rate": 1.0,
+            "context_saved_ratio": 0.6057
+          },
+          "details": {
+            "note": "0.6057"
+          },
+          "error": null,
+          "duration_ms": 0.7
+        }
+      ]
+    },
+    {
+      "suite": "P5 · 闲鱼 PPT 接单 Copilot（HITL）",
+      "created_at": "2026-11-10T09:29:25",
+      "cases": 10,
+      "passed": 10,
+      "metrics": {
+        "approval_gate_rate": 1.0,
+        "completion_rate": 1.0,
+        "injection_flag_rate": 1.0,
+        "missing_detection_rate": 1.0,
+        "pages_accuracy": 1.0,
+        "pii_clean_rate": 1.0,
+        "price_in_range": 1.0,
+        "price_reproducible": 1.0,
+        "revision_fee_correct": 1.0,
+        "task_type_accuracy": 1.0,
+        "case_pass_rate": 1.0
+      },
+      "thresholds": {
+        "task_type_accuracy": 0.9,
+        "pages_accuracy": 0.85,
+        "price_in_range": 1.0,
+        "price_reproducible": 1.0,
+        "missing_detection_rate": 1.0,
+        "approval_gate_rate": 1.0,
+        "pii_clean_rate": 1.0,
+        "injection_flag_rate": 1.0,
+        "revision_fee_correct": 1.0,
+        "completion_rate": 1.0
+      },
+      "gate_passed": true,
+      "gate_failures": [],
+      "results": [
+        {
+          "case_id": "o01_speech_to_ppt",
+          "passed": true,
+          "metrics": {
+            "task_type_accuracy": 1.0,
+            "pages_accuracy": 1.0,
+            "price_in_range": 1.0,
+            "price_reproducible": 1.0,
+            "approval_gate_rate": 1.0,
+            "pii_clean_rate": 1.0,
+            "completion_rate": 1.0
+          },
+          "details": {
+            "task_type": "speech_to_ppt",
+            "pages": 20,
+            "price": 49,
+            "clamped": false,
+            "questions": 0,
+            "injections": [],
+            "revision_fee": 0,
+            "note": "intake → extract → clarify → quote → approval_gate → brief"
+          },
+          "error": null,
+          "duration_ms": 483.2
+        },
+        {
+          "case_id": "o02_optimize_draft",
+          "passed": true,
+          "metrics": {
+            "task_type_accuracy": 1.0,
+            "pages_accuracy": 1.0,
+            "price_in_range": 1.0,
+            "price_reproducible": 1.0,
+            "approval_gate_rate": 1.0,
+            "pii_clean_rate": 1.0,
+            "completion_rate": 1.0
+          },
+          "details": {
+            "task_type": "optimize_draft",
+            "pages": 12,
+            "price": 18,
+            "clamped": false,
+            "questions": 0,
+            "injections": [],
+            "revision_fee": 0,
+            "note": "intake → extract → clarify → quote → approval_gate → brief"
+          },
+          "error": null,
+          "duration_ms": 396.7
+        },
+        {
+          "case_id": "o03_visual_only",
+          "passed": true,
+          "metrics": {
+            "task_type_accuracy": 1.0,
+            "pages_accuracy": 1.0,
+            "price_in_range": 1.0,
+            "price_reproducible": 1.0,
+            "approval_gate_rate": 1.0,
+            "pii_clean_rate": 1.0,
+            "completion_rate": 1.0
+          },
+          "details": {
+            "task_type": "visual_only",
+            "pages": 8,
+            "price": 11,
+            "clamped": false,
+            "questions": 1,
+            "injections": [],
+            "revision_fee": 0,
+            "note": "intake → extract → clarify → quote → approval_gate → brief"
+          },
+          "error": null,
+          "duration_ms": 427.3
+        },
+        {
+          "case_id": "o04_missing_info",
+          "passed": true,
+          "metrics": {
+            "price_in_range": 1.0,
+            "price_reproducible": 1.0,
+            "missing_detection_rate": 1.0,
+            "approval_gate_rate": 1.0,
+            "pii_clean_rate": 1.0,
+            "completion_rate": 1.0
+          },
+          "details": {
+            "task_type": "unknown",
+            "pages": null,
+            "price": null,
+            "clamped": false,
+            "questions": 4,
+            "injections": [],
+            "revision_fee": 0,
+            "note": "intake → extract → clarify → quote → approval_gate → brief"
+          },
+          "error": null,
+          "duration_ms": 433.4
+        },
+        {
+          "case_id": "o05_urgent_clamp",
+          "passed": true,
+          "metrics": {
+            "task_type_accuracy": 1.0,
+            "pages_accuracy": 1.0,
+            "price_in_range": 1.0,
+            "price_reproducible": 1.0,
+            "approval_gate_rate": 1.0,
+            "pii_clean_rate": 1.0,
+            "completion_rate": 1.0
+          },
+          "details": {
+            "task_type": "speech_to_ppt",
+            "pages": 30,
+            "price": 60,
+            "clamped": true,
+            "questions": 0,
+            "injections": [],
+            "revision_fee": 0,
+            "note": "intake → extract → clarify → quote → approval_gate → brief"
+          },
+          "error": null,
+          "duration_ms": 476.1
+        },
+        {
+          "case_id": "o06_prompt_injection",
+          "passed": true,
+          "metrics": {
+            "price_in_range": 1.0,
+            "price_reproducible": 1.0,
+            "injection_flag_rate": 1.0,
+            "approval_gate_rate": 1.0,
+            "pii_clean_rate": 1.0,
+            "completion_rate": 1.0
+          },
+          "details": {
+            "task_type": "speech_to_ppt",
+            "pages": 20,
+            "price": 44,
+            "clamped": false,
+            "questions": 2,
+            "injections": [
+              "中文指令覆盖"
+            ],
+            "revision_fee": 0,
+            "note": "intake → extract → clarify → quote → approval_gate → brief"
+          },
+          "error": null,
+          "duration_ms": 452.2
+        },
+        {
+          "case_id": "o07_pii",
+          "passed": true,
+          "metrics": {
+            "task_type_accuracy": 1.0,
+            "pages_accuracy": 1.0,
+            "price_in_range": 1.0,
+            "price_reproducible": 1.0,
+            "approval_gate_rate": 1.0,
+            "pii_clean_rate": 1.0,
+            "completion_rate": 1.0
+          },
+          "details": {
+            "task_type": "optimize_draft",
+            "pages": 10,
+            "price": 16,
+            "clamped": false,
+            "questions": 1,
+            "injections": [],
+            "revision_fee": 0,
+            "note": "intake → extract → clarify → quote → approval_gate → brief"
+          },
+          "error": null,
+          "duration_ms": 451.0
+        },
+        {
+          "case_id": "o08_revision_round3",
+          "passed": true,
+          "metrics": {
+            "price_in_range": 1.0,
+            "price_reproducible": 1.0,
+            "revision_fee_correct": 1.0,
+            "approval_gate_rate": 1.0,
+            "pii_clean_rate": 1.0,
+            "completion_rate": 1.0
+          },
+          "details": {
+            "task_type": "optimize_draft",
+            "pages": 15,
+            "price": 20,
+            "clamped": false,
+            "questions": 1,
+            "injections": [],
+            "revision_fee": 5,
+            "note": "intake → extract → clarify → quote → approval_gate → brief"
+          },
+          "error": null,
+          "duration_ms": 416.2
+        },
+        {
+          "case_id": "o09_min_price",
+          "passed": true,
+          "metrics": {
+            "task_type_accuracy": 1.0,
+            "pages_accuracy": 1.0,
+            "price_in_range": 1.0,
+            "price_reproducible": 1.0,
+            "approval_gate_rate": 1.0,
+            "pii_clean_rate": 1.0,
+            "completion_rate": 1.0
+          },
+          "details": {
+            "task_type": "visual_only",
+            "pages": 5,
+            "price": 10,
+            "clamped": true,
+            "questions": 1,
+            "injections": [],
+            "revision_fee": 0,
+            "note": "intake → extract → clarify → quote → approval_gate → brief"
+          },
+          "error": null,
+          "duration_ms": 478.2
+        },
+        {
+          "case_id": "o10_speech_academic",
+          "passed": true,
+          "metrics": {
+            "task_type_accuracy": 1.0,
+            "pages_accuracy": 1.0,
+            "price_in_range": 1.0,
+            "price_reproducible": 1.0,
+            "approval_gate_rate": 1.0,
+            "pii_clean_rate": 1.0,
+            "completion_rate": 1.0
+          },
+          "details": {
+            "task_type": "speech_to_ppt",
+            "pages": 15,
+            "price": 42,
+            "clamped": false,
+            "questions": 0,
+            "injections": [],
+            "revision_fee": 0,
+            "note": "intake → extract → clarify → quote → approval_gate → brief"
+          },
+          "error": null,
+          "duration_ms": 387.9
+        }
+      ]
+    }
+  ],
+  "gate_passed": true,
+  "total_cases": 55,
+  "total_passed": 53
+}

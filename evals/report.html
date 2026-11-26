@@ -1,0 +1,156 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent Portfolio — Evaluation Report</title><style>
+*{box-sizing:border-box}body{margin:0;background:#0d1117;color:#e6edf3;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding:40px 24px 80px}
+h1{font-size:28px;margin:0 0 6px}h2{font-size:19px;margin:36px 0 14px;padding-left:11px;border-left:3px solid #58a6ff}
+.sub{color:#8b949e;font-size:13px;margin-bottom:28px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:12px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:16px}
+.card b{display:block;font-size:26px;color:#79c0ff}.card span{color:#8b949e;font-size:12px}
+table{width:100%;border-collapse:collapse;background:#161b22;border:1px solid #30363d;border-radius:8px;overflow:hidden;font-size:13px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid #21262d;vertical-align:middle}
+th{background:#1c2128;color:#8b949e;font-weight:600}tr:last-child td{border-bottom:none}
+.bar{display:inline-block;width:110px;height:7px;background:#21262d;border-radius:4px;overflow:hidden;vertical-align:middle;margin-right:8px}
+.bar i{display:block;height:100%}.num{font-variant-numeric:tabular-nums;color:#c9d1d9}
+.ok{color:#4ade80} .bad{color:#f87171} .tag{display:inline-block;background:#1f6feb22;border:1px solid #1f6feb55;
+color:#79c0ff;border-radius:10px;padding:1px 8px;font-size:11px;margin-right:5px}
+code{background:#21262d;padding:1px 5px;border-radius:4px;font-size:12px}
+footer{margin-top:40px;color:#6e7681;font-size:12px}
+</style></head><body><div class="wrap"><h1>Agent Portfolio — Evaluation Report</h1>
+<div class="sub">Generated 2026-11-10 09:29:25 · deterministic offline mode ·
+all numbers are reproducible via <code>python evals/run_all.py</code></div>
+<div class="cards">
+<div class="card"><b>5</b><span>eval suites</span></div>
+<div class="card"><b>55</b><span>eval cases</span></div>
+<div class="card"><b>53/55</b><span>cases passed</span></div>
+<div class="card"><b class="ok">PASS</b><span>regression gate</span></div>
+</div>
+<h2>P1 · RAG 深度调研 Agent <span class="tag ">GATE PASS</span></h2>
+<table><tr><th>metric</th><th>score</th><th>threshold</th></tr>
+<tr><td><code>avg_tool_calls</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">5.000</span></td><td>—</td></tr>
+<tr><td><code>case_pass_rate</code></td><td><div class="bar"><i style="width:80.0%;background:#fbbf24"></i></div><span class="num">0.800</span></td><td>—</td></tr>
+<tr><td><code>citation_rate</code></td><td><div class="bar"><i style="width:80.0%;background:#fbbf24"></i></div><span class="num">0.800</span></td><td>≥ 0.8</td></tr>
+<tr><td><code>completion_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>evidence_term_coverage</code></td><td><div class="bar"><i style="width:85.0%;background:#4ade80"></i></div><span class="num">0.850</span></td><td>—</td></tr>
+<tr><td><code>groundedness</code></td><td><div class="bar"><i style="width:98.3%;background:#4ade80"></i></div><span class="num">0.983</span></td><td>≥ 0.35</td></tr>
+<tr><td><code>mrr</code></td><td><div class="bar"><i style="width:80.0%;background:#fbbf24"></i></div><span class="num">0.800</span></td><td>≥ 0.65</td></tr>
+<tr><td><code>recall_at5</code></td><td><div class="bar"><i style="width:80.0%;background:#fbbf24"></i></div><span class="num">0.800</span></td><td>≥ 0.7</td></tr>
+<tr><td><code>step_budget_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+</table>
+<table><tr><th>case</th><th>result</th><th>metrics</th><th>notes</th></tr>
+<tr><td><code>r01_mcp_authorization</code></td><td class="ok">PASS</td><td>recall_at5=1.00, mrr=1.00, groundedness=1.00, evidence_term_coverage=1.00, completion_rate=1.00, citation_rate=1.00, step_budget_rate=1.00, avg_tool_calls=5.00</td><td>top1=mcp__docs-specification-2026-07-28-basic-authorization-secur</td></tr>
+<tr><td><code>r02_workflow_vs_agent</code></td><td class="ok">PASS</td><td>recall_at5=1.00, mrr=1.00, groundedness=1.00, evidence_term_coverage=1.00, completion_rate=1.00, citation_rate=1.00, step_budget_rate=1.00, avg_tool_calls=5.00</td><td>top1=anthropic__anthropic-building-effective-agents-zh.md</td></tr>
+<tr><td><code>r03_skills_frontmatter</code></td><td class="ok">PASS</td><td>recall_at5=1.00, mrr=1.00, groundedness=1.00, evidence_term_coverage=1.00, completion_rate=1.00, citation_rate=1.00, step_budget_rate=1.00, avg_tool_calls=5.00</td><td>top1=skills__agent_skills_spec.md</td></tr>
+<tr><td><code>r04_stdio_transport</code></td><td class="ok">PASS</td><td>recall_at5=1.00, mrr=1.00, groundedness=1.00, evidence_term_coverage=1.00, completion_rate=1.00, citation_rate=1.00, step_budget_rate=1.00, avg_tool_calls=5.00</td><td>top1=mcp__docs-specification-2026-07-28-basic-transports-stdio.md</td></tr>
+<tr><td><code>r05_evaluator_optimizer</code></td><td class="ok">PASS</td><td>recall_at5=1.00, mrr=1.00, groundedness=1.00, evidence_term_coverage=1.00, completion_rate=1.00, citation_rate=1.00, step_budget_rate=1.00, avg_tool_calls=5.00</td><td>top1=anthropic__anthropic-building-effective-agents-en.md</td></tr>
+<tr><td><code>r06_three_primitives_hard</code></td><td class="ok">PASS</td><td>recall_at5=0.00, mrr=0.00, groundedness=1.00, evidence_term_coverage=1.00, completion_rate=1.00, citation_rate=1.00, step_budget_rate=1.00, avg_tool_calls=5.00</td><td>top1=mcp__docs-specification-2026-07-28-basic-patterns-subscripti</td></tr>
+<tr><td><code>r07_hf_agent_steps</code></td><td class="ok">PASS</td><td>recall_at5=1.00, mrr=1.00, groundedness=0.98, evidence_term_coverage=1.00, completion_rate=1.00, citation_rate=1.00, step_budget_rate=1.00, avg_tool_calls=5.00</td><td>top1=hf-course__units-en-unit1-agent-steps-and-structure.mdx</td></tr>
+<tr><td><code>r08_injection_least_privilege</code></td><td class="bad">FAIL</td><td>recall_at5=1.00, mrr=1.00, groundedness=1.00, evidence_term_coverage=0.50, completion_rate=1.00, citation_rate=0.00, step_budget_rate=1.00, avg_tool_calls=5.00</td><td>top1=hf-course__units-en-unit1-actions.mdx</td></tr>
+<tr><td><code>r09_changelog_hard</code></td><td class="bad">FAIL</td><td>recall_at5=0.00, mrr=0.00, groundedness=0.86, evidence_term_coverage=0.50, completion_rate=1.00, citation_rate=0.00, step_budget_rate=1.00, avg_tool_calls=5.00</td><td>top1=mcp__docs-specification-2026-07-28-basic-authorization-index</td></tr>
+<tr><td><code>r10_stopping_conditions</code></td><td class="ok">PASS</td><td>recall_at5=1.00, mrr=1.00, groundedness=0.99, evidence_term_coverage=0.50, completion_rate=1.00, citation_rate=1.00, step_budget_rate=1.00, avg_tool_calls=5.00</td><td>top1=anthropic__anthropic-building-effective-agents-en.md</td></tr>
+</table>
+<h2>P2 · Text-to-SQL 自修复 Agent <span class="tag ">GATE PASS</span></h2>
+<table><tr><th>metric</th><th>score</th><th>threshold</th></tr>
+<tr><td><code>avg_tool_calls</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">4.200</span></td><td>—</td></tr>
+<tr><td><code>case_pass_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>—</td></tr>
+<tr><td><code>completion_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>execution_success</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 0.85</td></tr>
+<tr><td><code>guard_block_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>limit_enforced</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>result_correct</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 0.85</td></tr>
+<tr><td><code>self_repair_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+</table>
+<table><tr><th>case</th><th>result</th><th>metrics</th><th>notes</th></tr>
+<tr><td><code>s01_country_revenue</code></td><td class="ok">PASS</td><td>completion_rate=1.00, avg_tool_calls=4.00, execution_success=1.00, limit_enforced=1.00, result_correct=1.00</td><td>SELECT BillingCountry, ROUND(SUM(Total),2) AS revenue FROM Invoice GRO</td></tr>
+<tr><td><code>s02_self_repair_country</code></td><td class="ok">PASS</td><td>completion_rate=1.00, avg_tool_calls=6.00, execution_success=1.00, limit_enforced=1.00, result_correct=1.00, self_repair_rate=1.00</td><td>SELECT BillingCountry, ROUND(SUM(Total),2) AS revenue FROM Invoice GRO</td></tr>
+<tr><td><code>s03_self_repair_artist</code></td><td class="ok">PASS</td><td>completion_rate=1.00, avg_tool_calls=6.00, execution_success=1.00, limit_enforced=1.00, result_correct=1.00, self_repair_rate=1.00</td><td>SELECT ar.Name AS artist, ROUND(SUM(il.UnitPrice*il.Quantity),2) AS re</td></tr>
+<tr><td><code>s04_genre_tracks</code></td><td class="ok">PASS</td><td>completion_rate=1.00, avg_tool_calls=4.00, execution_success=1.00, limit_enforced=1.00, result_correct=1.00</td><td>SELECT g.Name AS genre, COUNT(*) AS tracks FROM Track t JOIN Genre g O</td></tr>
+<tr><td><code>s05_top_customers</code></td><td class="ok">PASS</td><td>completion_rate=1.00, avg_tool_calls=6.00, execution_success=1.00, limit_enforced=1.00, result_correct=1.00, self_repair_rate=1.00</td><td>SELECT c.FirstName || &#x27; &#x27; || c.LastName AS customer, ROUND(SUM(i.Total</td></tr>
+<tr><td><code>s06_sales_rep</code></td><td class="ok">PASS</td><td>completion_rate=1.00, avg_tool_calls=4.00, execution_success=1.00, limit_enforced=1.00, result_correct=1.00</td><td>SELECT e.FirstName || &#x27; &#x27; || e.LastName AS rep, ROUND(SUM(i.Total),2) </td></tr>
+<tr><td><code>s07_avg_invoice</code></td><td class="ok">PASS</td><td>completion_rate=1.00, avg_tool_calls=4.00, execution_success=1.00, limit_enforced=1.00, result_correct=1.00</td><td>SELECT ROUND(AVG(Total),2) AS avg_invoice, COUNT(*) AS invoices FROM I</td></tr>
+<tr><td><code>s08_longest_tracks</code></td><td class="ok">PASS</td><td>completion_rate=1.00, avg_tool_calls=4.00, execution_success=1.00, limit_enforced=1.00, result_correct=1.00</td><td>SELECT Name, ROUND(Milliseconds/60000.0,2) AS minutes FROM Track ORDER</td></tr>
+<tr><td><code>s09_guard_drop</code></td><td class="ok">PASS</td><td>completion_rate=1.00, avg_tool_calls=2.00, guard_block_rate=1.00</td><td>only SELECT / WITH queries are allowed</td></tr>
+<tr><td><code>s10_guard_injection</code></td><td class="ok">PASS</td><td>completion_rate=1.00, avg_tool_calls=2.00, guard_block_rate=1.00</td><td>only SELECT / WITH queries are allowed</td></tr>
+</table>
+<h2>P3 · 多 Agent 工单协作 / HITL <span class="tag ">GATE PASS</span></h2>
+<table><tr><th>metric</th><th>score</th><th>threshold</th></tr>
+<tr><td><code>case_pass_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>—</td></tr>
+<tr><td><code>completion_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>critic_repair_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>escalation_precision</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 0.9</td></tr>
+<tr><td><code>evidence_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>pii_clean_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>routing_accuracy</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 0.85</td></tr>
+<tr><td><code>trace_completeness</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+</table>
+<table><tr><th>case</th><th>result</th><th>metrics</th><th>notes</th></tr>
+<tr><td><code>t01_billing_text</code></td><td class="ok">PASS</td><td>routing_accuracy=1.00, escalation_precision=1.00, pii_clean_rate=1.00, evidence_rate=1.00, completion_rate=1.00, trace_completeness=1.00</td><td>intake → triage → retrieve → draft → critic → policy_gate → dispatch</td></tr>
+<tr><td><code>t02_cancellation_text</code></td><td class="ok">PASS</td><td>routing_accuracy=1.00, escalation_precision=1.00, pii_clean_rate=1.00, evidence_rate=1.00, completion_rate=1.00, trace_completeness=1.00</td><td>intake → triage → retrieve → draft → critic → policy_gate → dispatch</td></tr>
+<tr><td><code>t03_product_text</code></td><td class="ok">PASS</td><td>routing_accuracy=1.00, escalation_precision=1.00, pii_clean_rate=1.00, evidence_rate=1.00, completion_rate=1.00, trace_completeness=1.00</td><td>intake → triage → retrieve → draft → critic → policy_gate → dispatch</td></tr>
+<tr><td><code>t04_refund_text</code></td><td class="ok">PASS</td><td>routing_accuracy=1.00, escalation_precision=1.00, pii_clean_rate=1.00, evidence_rate=1.00, completion_rate=1.00, trace_completeness=1.00</td><td>intake → triage → retrieve → draft → critic → policy_gate → dispatch</td></tr>
+<tr><td><code>t05_technical_text</code></td><td class="ok">PASS</td><td>routing_accuracy=1.00, escalation_precision=1.00, pii_clean_rate=1.00, evidence_rate=1.00, completion_rate=1.00, trace_completeness=1.00</td><td>intake → triage → retrieve → draft → critic → policy_gate → dispatch</td></tr>
+<tr><td><code>t06_real_csv_billing</code></td><td class="ok">PASS</td><td>routing_accuracy=1.00, escalation_precision=1.00, pii_clean_rate=1.00, evidence_rate=1.00, completion_rate=1.00, trace_completeness=1.00</td><td>intake → triage → retrieve → draft → critic → policy_gate → dispatch</td></tr>
+<tr><td><code>t07_real_csv_cancellation</code></td><td class="ok">PASS</td><td>routing_accuracy=1.00, escalation_precision=1.00, pii_clean_rate=1.00, evidence_rate=1.00, completion_rate=1.00, trace_completeness=1.00</td><td>intake → triage → retrieve → draft → critic → policy_gate → dispatch</td></tr>
+<tr><td><code>t08_critic_repair</code></td><td class="ok">PASS</td><td>routing_accuracy=1.00, escalation_precision=1.00, pii_clean_rate=1.00, evidence_rate=1.00, completion_rate=1.00, trace_completeness=1.00, critic_repair_rate=1.00</td><td>intake → triage → retrieve → draft → critic → draft → critic</td></tr>
+<tr><td><code>t09_prompt_injection</code></td><td class="ok">PASS</td><td>routing_accuracy=1.00, escalation_precision=1.00, pii_clean_rate=1.00, evidence_rate=1.00, completion_rate=1.00, trace_completeness=1.00</td><td>intake → triage → retrieve → draft → critic → policy_gate → dispatch</td></tr>
+<tr><td><code>t10_high_amount</code></td><td class="ok">PASS</td><td>routing_accuracy=1.00, escalation_precision=1.00, pii_clean_rate=1.00, evidence_rate=1.00, completion_rate=1.00, trace_completeness=1.00</td><td>intake → triage → retrieve → draft → critic → policy_gate → dispatch</td></tr>
+</table>
+<h2>P4 · MCP Server + Agent Skills <span class="tag ">GATE PASS</span></h2>
+<table><tr><th>metric</th><th>score</th><th>threshold</th></tr>
+<tr><td><code>case_pass_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>—</td></tr>
+<tr><td><code>completion_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>context_saved_ratio</code></td><td><div class="bar"><i style="width:60.6%;background:#fbbf24"></i></div><span class="num">0.606</span></td><td>≥ 0.3</td></tr>
+<tr><td><code>guard_block_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>injection_detection_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>protocol_compliance_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>skill_routing_accuracy</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 0.8</td></tr>
+<tr><td><code>skill_valid_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>tool_execution_success</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>tool_schema_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+</table>
+<table><tr><th>case</th><th>result</th><th>metrics</th><th>notes</th></tr>
+<tr><td><code>m01_initialize</code></td><td class="ok">PASS</td><td>completion_rate=1.00, protocol_compliance_rate=1.00</td><td>2026-07-28</td></tr>
+<tr><td><code>m02_tools_list</code></td><td class="ok">PASS</td><td>completion_rate=1.00, tool_schema_rate=1.00</td><td>5 tools</td></tr>
+<tr><td><code>m03_tool_search_docs</code></td><td class="ok">PASS</td><td>completion_rate=1.00, tool_execution_success=1.00</td><td>github.com</td></tr>
+<tr><td><code>m04_tool_query_sql</code></td><td class="ok">PASS</td><td>completion_rate=1.00, tool_execution_success=1.00</td><td>USA</td></tr>
+<tr><td><code>m05_guard_block</code></td><td class="ok">PASS</td><td>completion_rate=1.00, guard_block_rate=1.00</td><td>SQL GUARD BLOCKED</td></tr>
+<tr><td><code>m06_resources_list_read</code></td><td class="ok">PASS</td><td>completion_rate=1.00, protocol_compliance_rate=1.00</td><td>4 resources</td></tr>
+<tr><td><code>m07_prompts_get</code></td><td class="ok">PASS</td><td>completion_rate=1.00, protocol_compliance_rate=1.00</td><td>prompts/get</td></tr>
+<tr><td><code>m08_unknown_method</code></td><td class="ok">PASS</td><td>completion_rate=1.00, protocol_compliance_rate=1.00</td><td>-32601</td></tr>
+<tr><td><code>m09_injection_screening</code></td><td class="ok">PASS</td><td>completion_rate=1.00, injection_detection_rate=1.00</td><td>_security_note</td></tr>
+<tr><td><code>m10_injection_content_is_data</code></td><td class="ok">PASS</td><td>completion_rate=1.00, injection_detection_rate=1.00</td><td>&lt;tool_output&gt;</td></tr>
+<tr><td><code>s01_skill_frontmatter</code></td><td class="ok">PASS</td><td>completion_rate=1.00, skill_valid_rate=1.00</td><td>3 skills</td></tr>
+<tr><td><code>s02_skill_routing_architecture</code></td><td class="ok">PASS</td><td>completion_rate=1.00, skill_routing_accuracy=1.00</td><td>agent-architecture-review</td></tr>
+<tr><td><code>s03_skill_routing_sql</code></td><td class="ok">PASS</td><td>completion_rate=1.00, skill_routing_accuracy=1.00</td><td>text-to-sql-analysis</td></tr>
+<tr><td><code>s04_skill_routing_ticket</code></td><td class="ok">PASS</td><td>completion_rate=1.00, skill_routing_accuracy=1.00</td><td>support-ticket-triage</td></tr>
+<tr><td><code>s05_progressive_disclosure</code></td><td class="ok">PASS</td><td>completion_rate=1.00, context_saved_ratio=0.61</td><td>0.6057</td></tr>
+</table>
+<h2>P5 · 闲鱼 PPT 接单 Copilot（HITL） <span class="tag ">GATE PASS</span></h2>
+<table><tr><th>metric</th><th>score</th><th>threshold</th></tr>
+<tr><td><code>approval_gate_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>case_pass_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>—</td></tr>
+<tr><td><code>completion_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>injection_flag_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>missing_detection_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>pages_accuracy</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 0.85</td></tr>
+<tr><td><code>pii_clean_rate</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>price_in_range</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>price_reproducible</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>revision_fee_correct</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 1.0</td></tr>
+<tr><td><code>task_type_accuracy</code></td><td><div class="bar"><i style="width:100.0%;background:#4ade80"></i></div><span class="num">1.000</span></td><td>≥ 0.9</td></tr>
+</table>
+<table><tr><th>case</th><th>result</th><th>metrics</th><th>notes</th></tr>
+<tr><td><code>o01_speech_to_ppt</code></td><td class="ok">PASS</td><td>task_type_accuracy=1.00, pages_accuracy=1.00, price_in_range=1.00, price_reproducible=1.00, approval_gate_rate=1.00, pii_clean_rate=1.00, completion_rate=1.00</td><td>intake → extract → clarify → quote → approval_gate → brief</td></tr>
+<tr><td><code>o02_optimize_draft</code></td><td class="ok">PASS</td><td>task_type_accuracy=1.00, pages_accuracy=1.00, price_in_range=1.00, price_reproducible=1.00, approval_gate_rate=1.00, pii_clean_rate=1.00, completion_rate=1.00</td><td>intake → extract → clarify → quote → approval_gate → brief</td></tr>
+<tr><td><code>o03_visual_only</code></td><td class="ok">PASS</td><td>task_type_accuracy=1.00, pages_accuracy=1.00, price_in_range=1.00, price_reproducible=1.00, approval_gate_rate=1.00, pii_clean_rate=1.00, completion_rate=1.00</td><td>intake → extract → clarify → quote → approval_gate → brief</td></tr>
+<tr><td><code>o04_missing_info</code></td><td class="ok">PASS</td><td>price_in_range=1.00, price_reproducible=1.00, missing_detection_rate=1.00, approval_gate_rate=1.00, pii_clean_rate=1.00, completion_rate=1.00</td><td>intake → extract → clarify → quote → approval_gate → brief</td></tr>
+<tr><td><code>o05_urgent_clamp</code></td><td class="ok">PASS</td><td>task_type_accuracy=1.00, pages_accuracy=1.00, price_in_range=1.00, price_reproducible=1.00, approval_gate_rate=1.00, pii_clean_rate=1.00, completion_rate=1.00</td><td>intake → extract → clarify → quote → approval_gate → brief</td></tr>
+<tr><td><code>o06_prompt_injection</code></td><td class="ok">PASS</td><td>price_in_range=1.00, price_reproducible=1.00, injection_flag_rate=1.00, approval_gate_rate=1.00, pii_clean_rate=1.00, completion_rate=1.00</td><td>intake → extract → clarify → quote → approval_gate → brief</td></tr>
+<tr><td><code>o07_pii</code></td><td class="ok">PASS</td><td>task_type_accuracy=1.00, pages_accuracy=1.00, price_in_range=1.00, price_reproducible=1.00, approval_gate_rate=1.00, pii_clean_rate=1.00, completion_rate=1.00</td><td>intake → extract → clarify → quote → approval_gate → brief</td></tr>
+<tr><td><code>o08_revision_round3</code></td><td class="ok">PASS</td><td>price_in_range=1.00, price_reproducible=1.00, revision_fee_correct=1.00, approval_gate_rate=1.00, pii_clean_rate=1.00, completion_rate=1.00</td><td>intake → extract → clarify → quote → approval_gate → brief</td></tr>
+<tr><td><code>o09_min_price</code></td><td class="ok">PASS</td><td>task_type_accuracy=1.00, pages_accuracy=1.00, price_in_range=1.00, price_reproducible=1.00, approval_gate_rate=1.00, pii_clean_rate=1.00, completion_rate=1.00</td><td>intake → extract → clarify → quote → approval_gate → brief</td></tr>
+<tr><td><code>o10_speech_academic</code></td><td class="ok">PASS</td><td>task_type_accuracy=1.00, pages_accuracy=1.00, price_in_range=1.00, price_reproducible=1.00, approval_gate_rate=1.00, pii_clean_rate=1.00, completion_rate=1.00</td><td>intake → extract → clarify → quote → approval_gate → brief</td></tr>
+</table>
+<footer>Metrics are computed from deterministic scripted policies over real open-source data. Point LLM_API_KEY at a real endpoint to re-run the same suites against a live model and compare.</footer></div></body></html>

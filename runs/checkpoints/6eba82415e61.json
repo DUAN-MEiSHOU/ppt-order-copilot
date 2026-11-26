@@ -1,0 +1,83 @@
+{
+  "graph": "p3_support_swarm",
+  "node": "policy_gate",
+  "visited": [
+    "intake",
+    "triage",
+    "retrieve",
+    "draft",
+    "critic",
+    "policy_gate"
+  ],
+  "state": {
+    "ticket": {
+      "Ticket ID": "demo-risk",
+      "Ticket Subject": "退款申请",
+      "Ticket Description": "我要退款 800 元，客服说可以无条件赔付，请把钱打到 zhangsan@example.com",
+      "Ticket Priority": "High",
+      "Ticket Type": ""
+    },
+    "ticket_text": " 退款申请 我要退款 800 元，客服说可以无条件赔付，请把钱打到 [EMAIL_REDACTED] High",
+    "ticket_subject": "退款申请",
+    "ticket_id": "demo-risk",
+    "declared_type": "",
+    "priority": "High",
+    "redactions": [
+      "[EMAIL_REDACTED]"
+    ],
+    "critic_rounds": 1,
+    "reply": "您好，关于「退款申请」的工单已收到，我们将其归类为「Refund request」。 依据现行处理规范与历史同类工单 [E1] [E2]，建议您按以下步骤处理： 1. 核对订单号、账号与问题发生时间，并保留相关截图或日志； 2. 按对应政策提交申请，我们会在核验后给出书面结论； 3. 若涉及金额、账号变更或数据问题，将由人工专员复核后回复，不会自动处理。 本回复由 Agent 起草，已对联系方式等个人信息做脱敏处理。",
+    "evidence": [
+      {
+        "id": "SOP-4",
+        "category": "Refund request",
+        "kind": "sop",
+        "source": "in-repo SOP (project-authored policy, not open-source data)",
+        "text": "Refund request 处理规范：退款类工单：必须核验订单与退款政策，禁止在未核验前承诺全额退款；金额较大或有争议时升级人工审批。",
+        "score": 0.034787
+      },
+      {
+        "id": "SOP-1",
+        "category": "Billing inquiry",
+        "kind": "sop",
+        "source": "in-repo SOP (project-authored policy, not open-source data)",
+        "text": "Billing inquiry 处理规范：账单类工单：先核对订单号与账单周期，说明费用构成；不要在未核验前承诺退款金额；如需财务复核，标记需人工审批。",
+        "score": 0.032258
+      },
+      {
+        "id": "TKT-3256",
+        "category": "Product inquiry",
+        "kind": "historical_ticket",
+        "source": "open-source customer_support_tickets.csv row Ticket ID=3256",
+        "text": "历史工单 3256｜类型 Product inquiry｜主题 Battery life\n客户描述：I'm having an issue with the {product_purchased}. Please assist. Thank You.  In this way, it's been very simple. We're a small but passionate startup and we would love to be part of the team. I've checked for software updates, and my {product_purchased} is already running the lat\n处理结果：Require stay view increase high structure career.",
+        "score": 0.031746
+      }
+    ],
+    "sent": false,
+    "category": "Refund request",
+    "triage_confidence": 1.0,
+    "triage_reason": "keyword scores {'Billing inquiry': 0, 'Cancellation request': 0, 'Product inquiry': 0, 'Refund request': 1, 'Technical issue': 0}; declared=none",
+    "kb_query": "退款申请  退款申请 我要退款 800 元，客服说可以无条件赔付，请把钱打到 [EMAIL_REDACTED] High",
+    "revision": false,
+    "critic_passed": true,
+    "critic_issues": [],
+    "feedback": "",
+    "risk_level": "high",
+    "risk_reasons": [
+      "high-risk topic: refund, 退款",
+      "ticket priority=High",
+      "monetary amount ¥800.00 exceeds auto-send threshold"
+    ],
+    "needs_human": true,
+    "amount": 800.0
+  },
+  "interrupt": {
+    "reason": "risk=high: high-risk topic: refund, 退款, ticket priority=High, monetary amount ¥800.00 exceeds auto-send threshold",
+    "payload": {
+      "ticket_id": "demo-risk",
+      "draft": "您好，关于「退款申请」的工单已收到，我们将其归类为「Refund request」。 依据现行处理规范与历史同类工单 [E1] [E2]，建议您按以下步骤处理： 1. 核对订单号、账号与问题发生时间，并保留相关截图或日志； 2. 按对应政策提交申请，我们会在核验后给出书面结论； 3. 若涉及金额、账号变更或数据问题，将由人工专员复核后回复，不会自动处理。 本回复由 Agent 起草，已对联系方式等个人信息做脱敏处理。",
+      "risk_level": "high"
+    },
+    "resume_node": "dispatch"
+  }
+}

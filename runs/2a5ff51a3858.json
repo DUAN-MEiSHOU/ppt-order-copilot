@@ -1,0 +1,65 @@
+{
+  "name": "p3_support_swarm",
+  "run_id": "2a5ff51a3858",
+  "started_at": 1794243244.8410988,
+  "metadata": {},
+  "totals": {
+    "run_id": "2a5ff51a3858",
+    "duration_ms": 6.6,
+    "spans": 3,
+    "llm_calls": 0,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "est_cost_usd": 0.0,
+    "blocked": 0
+  },
+  "spans": [
+    {
+      "span_id": "8dd9c9cb98",
+      "parent_id": null,
+      "kind": "node",
+      "name": "dispatch",
+      "started_at": 1794243244.8411198,
+      "duration_ms": 0.04792213439941406,
+      "status": "ok",
+      "inputs": "{\"state_keys\": [\"ticket\", \"ticket_text\", \"ticket_subject\", \"ticket_id\", \"declared_type\", \"priority\", \"redactions\", \"critic_rounds\", \"reply\", \"evidence\", \"sent\", \"category\", \"triage_confidence\", \"triage_reason\", \"kb_query\", \"revision\", \"critic_passed\", \"critic_issues\", \"feedback\", \"risk_level\", \"risk_reasons\", \"needs_human\", \"amount\", \"approval\"]}",
+      "outputs": "{\"patch_keys\": [\"approved\"], \"decision\": null}",
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "span_id": "5332d67279",
+      "parent_id": null,
+      "kind": "node",
+      "name": "send",
+      "started_at": 1794243244.841185,
+      "duration_ms": 6.329059600830078,
+      "status": "ok",
+      "inputs": "{\"state_keys\": [\"ticket\", \"ticket_text\", \"ticket_subject\", \"ticket_id\", \"declared_type\", \"priority\", \"redactions\", \"critic_rounds\", \"reply\", \"evidence\", \"sent\", \"category\", \"triage_confidence\", \"triage_reason\", \"kb_query\", \"revision\", \"critic_passed\", \"critic_issues\", \"feedback\", \"risk_level\", \"risk_reasons\", \"needs_human\", \"amount\", \"approval\", \"approved\"]}",
+      "outputs": "{\"patch_keys\": [\"sent\", \"delivery\"], \"decision\": null}",
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "span_id": "160ece33a1",
+      "parent_id": null,
+      "kind": "node",
+      "name": "done",
+      "started_at": 1794243244.8475924,
+      "duration_ms": 0.10991096496582031,
+      "status": "ok",
+      "inputs": "{\"state_keys\": [\"ticket\", \"ticket_text\", \"ticket_subject\", \"ticket_id\", \"declared_type\", \"priority\", \"redactions\", \"critic_rounds\", \"reply\", \"evidence\", \"sent\", \"category\", \"triage_confidence\", \"triage_reason\", \"kb_query\", \"revision\", \"critic_passed\", \"critic_issues\", \"feedback\", \"risk_level\", \"risk_reasons\", \"needs_human\", \"amount\", \"approval\", \"approved\", \"delivery\"]}",
+      "outputs": "{\"terminal\": true}",
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "error": null,
+      "meta": {}
+    }
+  ]
+}

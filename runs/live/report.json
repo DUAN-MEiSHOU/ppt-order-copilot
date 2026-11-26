@@ -1,0 +1,65 @@
+{
+  "mode": "live-model",
+  "model_requested": "deepseek-chat",
+  "cases": [
+    {
+      "chat_id": "c01_speech_to_ppt",
+      "status": "needs_clarification",
+      "models": [
+        "deepseek-chat"
+      ],
+      "roles": [
+        "customer_service",
+        "supervisor"
+      ],
+      "pptx": null,
+      "trace": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\live\\order_9592fff678.json"
+    },
+    {
+      "chat_id": "c08_revision_round3",
+      "status": "needs_clarification",
+      "models": [
+        "deepseek-chat"
+      ],
+      "roles": [
+        "customer_service",
+        "supervisor"
+      ],
+      "pptx": null,
+      "trace": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\live\\order_ccad59206b.json"
+    },
+    {
+      "chat_id": "complete_rag_brief",
+      "status": "draft_ready",
+      "models": [
+        "deepseek-chat"
+      ],
+      "roles": [
+        "customer_service",
+        "supervisor",
+        "designer",
+        "supervisor",
+        "customer_service"
+      ],
+      "pptx": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\live\\order_f2af914c18.pptx",
+      "trace": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\live\\order_a767f159d4.json"
+    },
+    {
+      "chat_id": "complete_rag_revision",
+      "status": "draft_ready",
+      "models": [
+        "deepseek-chat"
+      ],
+      "roles": [
+        "customer_service",
+        "supervisor",
+        "designer",
+        "supervisor",
+        "customer_service"
+      ],
+      "pptx": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\live\\order_36054e0a77.pptx",
+      "trace": "D:\\Pro Study\\Agent Learning\\p5_ppt_order_copilot\\runs\\live\\order_abfdfb20ef.json"
+    }
+  ],
+  "draft_rate": 0.5
+}

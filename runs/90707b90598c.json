@@ -1,0 +1,100 @@
+{
+  "name": "scripted:agent-loop",
+  "run_id": "90707b90598c",
+  "started_at": 1794240993.0374172,
+  "metadata": {
+    "question": "按国家统计总收入",
+    "llm": "scripted",
+    "context_keys": [],
+    "final_status": "done"
+  },
+  "totals": {
+    "run_id": "90707b90598c",
+    "duration_ms": 3.9,
+    "spans": 5,
+    "llm_calls": 3,
+    "tool_calls": 2,
+    "tool_errors": 0,
+    "tokens_in": 1208,
+    "tokens_out": 73,
+    "est_cost_usd": 0.000369,
+    "blocked": 0
+  },
+  "spans": [
+    {
+      "span_id": "61706ee5ab",
+      "parent_id": null,
+      "kind": "llm",
+      "name": "step-1",
+      "started_at": 1794240993.0374727,
+      "duration_ms": 0.17142295837402344,
+      "status": "ok",
+      "inputs": "{\"messages\": 2}",
+      "outputs": "{\"content_snippet\": \"\", \"tool_calls\": [\"describe_table\"]}",
+      "tokens_in": 188,
+      "tokens_out": 19,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "span_id": "e1b1945460",
+      "parent_id": null,
+      "kind": "tool",
+      "name": "describe_table",
+      "started_at": 1794240993.0376709,
+      "duration_ms": 1.7242431640625,
+      "status": "ok",
+      "inputs": "{\"table\": \"Invoice\"}",
+      "outputs": "{\"ok\": true, \"error\": null, \"preview\": \"{'ok': True, 'table': 'Invoice', 'cached_columns': 39, 'cached_tables': 11, 'columns': [{'name': 'InvoiceId', 'type': 'INTEGER', 'pk': True}, {'name': 'CustomerId', 'type': 'INTEGER', 'pk': False}, {'name': 'InvoiceDate', 'type': 'DATETIME', 'pk': Fa\"}",
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "span_id": "66be722407",
+      "parent_id": null,
+      "kind": "llm",
+      "name": "step-2",
+      "started_at": 1794240993.039465,
+      "duration_ms": 0.15354156494140625,
+      "status": "ok",
+      "inputs": "{\"messages\": 4}",
+      "outputs": "{\"content_snippet\": \"\", \"tool_calls\": [\"run_sql\"]}",
+      "tokens_in": 448,
+      "tokens_out": 46,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "span_id": "69b0f8c647",
+      "parent_id": null,
+      "kind": "tool",
+      "name": "run_sql",
+      "started_at": 1794240993.0396352,
+      "duration_ms": 1.4545917510986328,
+      "status": "ok",
+      "inputs": "{\"sql\": \"SELECT BillingCountry, ROUND(SUM(Total),2) AS revenue FROM Invoices GROUP BY BillingCountry ORDER BY revenue DESC LIMIT 5\"}",
+      "outputs": "{\"ok\": true, \"error\": null, \"preview\": \"{'ok': False, 'blocked': False, 'error': 'OperationalError: no such table: Invoices'}\"}",
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "error": null,
+      "meta": {}
+    },
+    {
+      "span_id": "2c4de60481",
+      "parent_id": null,
+      "kind": "llm",
+      "name": "step-3",
+      "started_at": 1794240993.0411484,
+      "duration_ms": 0.15211105346679688,
+      "status": "ok",
+      "inputs": "{\"messages\": 6}",
+      "outputs": "{\"content_snippet\": \"Query finished without a report.\", \"tool_calls\": []}",
+      "tokens_in": 572,
+      "tokens_out": 8,
+      "error": null,
+      "meta": {}
+    }
+  ]
+}

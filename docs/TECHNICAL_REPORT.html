@@ -1,0 +1,357 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent 工程作品集 · 技术报告</title><style>
+*{box-sizing:border-box}
+body{margin:0;background:#0d1117;color:#e6edf3;font-family:-apple-system,BlinkMacSystemFont,
+ "Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;font-size:15px}
+a{color:#79c0ff;text-decoration:none}a:hover{text-decoration:underline}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:28px;max-width:1400px;
+ margin:0 auto;padding:32px 24px 80px}
+nav{position:sticky;top:24px;align-self:start;max-height:calc(100vh - 48px);overflow:auto;
+ background:#161b22;border:1px solid #30363d;border-radius:10px;padding:16px 14px;font-size:13px}
+nav b{display:block;color:#8b949e;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+nav a{display:block;color:#c9d1d9;padding:4px 8px;border-left:2px solid transparent;border-radius:0 4px 4px 0}
+nav a:hover{background:#1c2128;border-left-color:#58a6ff;text-decoration:none}
+nav a.lv3{padding-left:20px;font-size:12px;color:#8b949e}
+main{min-width:0}
+h1{font-size:30px;margin:0 0 10px;line-height:1.3}
+h2{font-size:22px;margin:44px 0 16px;padding:8px 0 8px 12px;border-left:3px solid #58a6ff;
+ background:linear-gradient(90deg,#1c212855,transparent)}
+h3{font-size:17px;margin:28px 0 10px;color:#79c0ff}
+h4{font-size:15px;margin:20px 0 8px;color:#c9d1d9}
+p{margin:10px 0}
+hr{border:none;border-top:1px solid #30363d;margin:32px 0}
+ul,ol{margin:10px 0;padding-left:24px}li{margin:5px 0}
+blockquote{margin:14px 0;padding:10px 16px;background:#161b22;border-left:3px solid #58a6ff;
+ border-radius:0 6px 6px 0;color:#c9d1d9}
+code{background:#21262d;padding:2px 6px;border-radius:4px;font-size:12.5px;color:#a5d6ff;
+ font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+pre{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;overflow:auto;
+ margin:16px 0;line-height:1.55}
+pre code{background:none;padding:0;color:#c9d1d9;font-size:12.5px}
+table{width:100%;border-collapse:collapse;background:#161b22;border:1px solid #30363d;
+ border-radius:8px;overflow:hidden;margin:16px 0;font-size:13.5px;display:table}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid #21262d;vertical-align:top}
+th{background:#1c2128;color:#8b949e;font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+strong{color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0}
+.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:14px 16px}
+.card b{display:block;font-size:24px;color:#79c0ff;line-height:1.3}
+.card span{color:#8b949e;font-size:12px}
+.ok{color:#4ade80}.bad{color:#f87171}
+.sub{color:#8b949e;font-size:13px;margin-bottom:8px}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid #30363d;color:#6e7681;font-size:12px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}nav{position:static;max-height:none}}
+@media print{body{background:#fff;color:#111}nav{display:none}.layout{display:block}
+ h2{border-left-color:#333;background:none}code,pre,table,blockquote,.card{background:#f6f8fa;color:#111}
+ th{background:#eee;color:#111}pre code{color:#111}a{color:#0366d6}}
+</style></head>
+<body><div class="layout">
+<nav><b>目录</b><a class="" href="#摘要">摘要</a><a class="" href="#1-任务定义与方向评估">1. 任务定义与方向评估</a><a class="lv3" href="#1-1-原始需求">1.1 原始需求</a><a class="lv3" href="#1-2-补充方向-闲鱼-微信-ppt-代做工作流的可行性评估">1.2 补充方向：闲鱼 / 微信 PPT 代做工作流的可行性评估</a><a class="lv3" href="#1-3-交付范围">1.3 交付范围</a><a class="" href="#2-调研方法与发现">2. 调研方法与发现</a><a class="lv3" href="#2-1-岗位能力模型-2026">2.1 岗位能力模型（2026）</a><a class="lv3" href="#2-2-github-开源生态调研">2.2 GitHub / 开源生态调研</a><a class="lv3" href="#2-3-环境约束与数据可得性">2.3 环境约束与数据可得性</a><a class="lv3" href="#2-4-选题决策">2.4 选题决策</a><a class="" href="#3-总体架构">3. 总体架构</a><a class="lv3" href="#3-1-分层">3.1 分层</a><a class="lv3" href="#3-2-共享内核-agentkit">3.2 共享内核 agentkit</a><a class="lv3" href="#3-3-两种运行模式-重要-避免误解">3.3 两种运行模式（重要，避免误解）</a><a class="lv3" href="#3-4-能力矩阵">3.4 能力矩阵</a><a class="" href="#4-关键技术实现">4. 关键技术实现</a><a class="lv3" href="#4-1-agent-loop-的三层预算与终止条件">4.1 Agent loop 的三层预算与终止条件</a><a class="lv3" href="#4-2-工具契约与最小权限">4.2 工具契约与最小权限</a><a class="lv3" href="#4-3-混合检索与两个真实修复">4.3 混合检索与两个真实修复</a><a class="lv3" href="#4-4-状态机-checkpoint-与人在回路">4.4 状态机、checkpoint 与人在回路</a><a class="lv3" href="#4-5-sql-护栏与环境反馈驱动的自修复">4.5 SQL 护栏与环境反馈驱动的自修复</a><a class="lv3" href="#4-6-mcp-协议与-agent-skills">4.6 MCP 协议与 Agent Skills</a><a class="lv3" href="#4-7-轨迹与成本">4.7 轨迹与成本</a><a class="lv3" href="#4-8-评估与回归门禁">4.8 评估与回归门禁</a><a class="" href="#5-数据-来源与许可">5. 数据、来源与许可</a><a class="" href="#6-实测结果">6. 实测结果</a><a class="lv3" href="#6-1-总览">6.1 总览</a><a class="lv3" href="#6-2-各项目指标">6.2 各项目指标</a><a class="lv3" href="#6-3-失败案例与-a-b-实验-不做数据美化">6.3 失败案例与 A/B 实验（不做数据美化）</a><a class="" href="#7-安全模型与风险登记">7. 安全模型与风险登记</a><a class="" href="#8-工程取舍-诚实边界与已知限制">8. 工程取舍、诚实边界与已知限制</a><a class="" href="#9-复现指南">9. 复现指南</a><a class="" href="#10-面试叙事">10. 面试叙事</a><a class="" href="#11-后续工作">11. 后续工作</a><a class="" href="#附录-a-目录结构">附录 A · 目录结构</a><a class="" href="#附录-b-指标定义">附录 B · 指标定义</a></nav>
+<main>
+<div class="sub">Zero-dependency · deterministic offline mode · generated from
+ <code>docs/TECHNICAL_REPORT.md</code> by <code>scripts/build_report_html.py</code></div>
+<div class="cards"><div class="card"><b>53/55</b><span>eval cases passed</span></div><div class="card"><b>5/5</b><span>suites gate PASS</span></div><div class="card"><b><span class="ok">PASS</span></b><span>regression gate</span></div><div class="card"><b>5</b><span>runnable projects</span></div><div class="card"><b>23/23</b><span>smoke checks</span></div></div><h3>回归门禁快照</h3><table><thead><tr><th>suite</th><th>cases</th><th>gate</th></tr></thead><tbody><tr><td>P1 · RAG 深度调研 Agent</td><td>8/10</td><td class="ok">PASS</td></tr><tr><td>P2 · Text-to-SQL 自修复 Agent</td><td>10/10</td><td class="ok">PASS</td></tr><tr><td>P3 · 多 Agent 工单协作 / HITL</td><td>10/10</td><td class="ok">PASS</td></tr><tr><td>P4 · MCP Server + Agent Skills</td><td>15/15</td><td class="ok">PASS</td></tr><tr><td>P5 · 闲鱼 PPT 接单 Copilot（HITL）</td><td>10/10</td><td class="ok">PASS</td></tr></tbody></table>
+<h1 id="agent-工程作品集-技术报告">Agent 工程作品集 · 技术报告</h1>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody>
+<tr><td>名称</td><td><code>agent-portfolio</code> — 面向 Agent / 大模型应用开发岗的工程作品集</td></tr>
+<tr><td>版本</td><td>v1.0.0</td></tr>
+<tr><td>日期</td><td>2026-11-10</td></tr>
+<tr><td>作者</td><td>万致远</td></tr>
+<tr><td>代码规模</td><td>45 个 Python 文件 / 5,150 行；23 份项目 Markdown 文档 / 2,592 行（不含 <code>data/rag_docs/</code> 第三方语料）；另有自包含 HTML 展示版 <code>docs/TECHNICAL_REPORT.html</code></td></tr>
+<tr><td>交付状态</td><td>5 个可运行项目全部完成；评测门禁 <strong>PASS</strong>；冒烟测试 <strong>23/23</strong></td></tr>
+<tr><td>关键结论</td><td>55 个评测用例通过 53 个，5 个 suite 的回归门禁全部通过；2 个失败案例为<strong>故意保留</strong>的困难案例，用于展示失败分析能力</td></tr>
+</tbody></table>
+<hr>
+<h2 id="摘要">摘要</h2>
+<p>本报告记录一次完整的「从岗位能力模型反推作品集」的工程实践：先调研 2026 年 Agent 开发岗真实考察的能力项与开源生态，再从 GitHub 抓取<strong>真实开源数据</strong>与规范文档，最后交付 5 个相互关联、可离线运行、带数值化评测的 Agent 项目。</p>
+<p>与常见的"调包 demo 合集"不同，本作品集的设计主线是<strong>一条可讲清楚的能力递进</strong>：</p>
+<ol><li>先<strong>手写</strong> agent loop、工具契约、状态机、检索、护栏、轨迹 —— 证明理解原理；</li><li>再用这条内核去实现三个真实工作流（调研 / 数据分析 / 客服工单）—— 证明能落地；</li><li>再把能力封装成标准 MCP Server 与 Agent Skills —— 证明懂协议与生态；</li><li>最后用一个来自本人真实副业的人机协同工作流 —— 证明会做<strong>边界判断</strong>（哪些该自动化、哪些必须留给人）；</li><li>全程用统一 trace 与 eval harness 量化 —— 证明能回答"你怎么知道它好用"。</li></ol>
+<p>用户中途补充的「闲鱼 PPT 代做」方向经评估后<strong>部分采纳</strong>：放弃无合规接口可用的平台消息自动化，保留并深化了需求抽取、可解释定价、人工审批与修改轮次管理，形成第 5 个项目。</p>
+<hr>
+<h2 id="1-任务定义与方向评估">1. 任务定义与方向评估</h2>
+<h3 id="1-1-原始需求">1.1 原始需求</h3>
+<blockquote>面试 agent 开发岗但项目少；需要几个<strong>实际工作流</strong>，能找到<strong>开源数据/资料做 RAG</strong>，有<strong>开源 skill 和工具</strong>；自行调研选取，评估方向可行性，能做就做，不能做就换一套；全程自主完成。</blockquote>
+<p>隐含的成功标准不是"文件数量"，而是：面试时能讲 5 分钟、能被追问三轮不塌、有可复现的数字、代码能被读。</p>
+<h3 id="1-2-补充方向-闲鱼-微信-ppt-代做工作流的可行性评估">1.2 补充方向：闲鱼 / 微信 PPT 代做工作流的可行性评估</h3>
+<p>用户补充的真实业务链路：闲鱼沟通 → 加微信 → 沟通制作细节（三类任务）→ 按页数与设计类型定价（10–60 元）→ 想法落实 → 反复修改。</p>
+<table><thead><tr><th>子环节</th><th>技术可行性</th><th>合规 / 稳定性</th><th>结论</th></tr></thead><tbody>
+<tr><td>闲鱼自动收发消息、抓订单</td><td>无面向个人开发者的公开消息/订单 API；只能靠抓包、逆向、模拟登录</td><td>触发风控、随客户端改版失效、账号风险</td><td><strong>放弃</strong></td></tr>
+<tr><td>微信个人号自动回复</td><td>无合规机器人接口；企业微信/公众号 API 触达不到个人好友会话</td><td>封号风险、违反平台条款</td><td><strong>放弃</strong></td></tr>
+<tr><td>聊天记录导入（粘贴 / 导出文本）</td><td>完全可行，零平台依赖</td><td>无风险</td><td><strong>采用</strong></td></tr>
+<tr><td>需求三分类、页数/风格/交付时间抽取</td><td>可行（规则 + LLM 结构化输出）</td><td>—</td><td><strong>采用</strong></td></tr>
+<tr><td>可解释报价（10–60 元钳制）、需求确认单、制作 brief</td><td>可行，纯确定性计算</td><td>金额是对外承诺，必须可审计</td><td><strong>采用</strong></td></tr>
+<tr><td>修改轮次与超轮加价</td><td>可行，状态机</td><td>—</td><td><strong>采用</strong></td></tr>
+<tr><td>生成可复制话术</td><td>可行；由人粘贴发送</td><td>保留人工对外的控制权</td><td><strong>采用</strong></td></tr>
+</tbody></table>
+<p><strong>评估结论：方向可做，但需砍掉消息通道。</strong> 这个取舍没有削弱项目，反而强化了它 —— 真实业务里"人必须拍板金额、人必须对外发言"本来就是硬约束，正好对应 Agent 岗最看重的 human-in-the-loop、guardrail 与能力边界。若未来出现官方 API，只需替换 <code>handoff</code> 节点，状态与报价逻辑不变。</p>
+<h3 id="1-3-交付范围">1.3 交付范围</h3>
+<p>5 个项目 + 1 个共享内核 + 统一评估/文档体系，全部位于 <code>D:\WorkBuddy Workspace\2026-11-09-23-55-57\agent-portfolio\</code>。</p>
+<blockquote>本报告偏「为什么这样设计」。若要看「每个项目具体实现了哪些功能、输入什么、产出什么」，见 <a href="FEATURES.md"><code>docs/FEATURES.md</code></a>，其中逐条贴了 5 个真实运行产物。</blockquote>
+<hr>
+<h2 id="2-调研方法与发现">2. 调研方法与发现</h2>
+<h3 id="2-1-岗位能力模型-2026">2.1 岗位能力模型（2026）</h3>
+<p>调研了 Agentic AI Engineer 路线图、招聘能力清单与面试题库，收敛出高频考察项：</p>
+<table><thead><tr><th>能力</th><th>出现频率</th><th>本作品集对应</th></tr></thead><tbody>
+<tr><td>手写 agent loop / 停止条件 / 预算</td><td>极高</td><td><code>agentkit/loop.py</code>、P1、P2</td></tr>
+<tr><td>Tool / function calling 与 JSON Schema</td><td>极高</td><td><code>agentkit/tools.py</code>、P2、P4</td></tr>
+<tr><td>RAG：分块、混合检索、重排、引用、检索评估</td><td>高</td><td><code>agentkit/rag.py</code>、P1、P3</td></tr>
+<tr><td>多 Agent 编排 / 状态机 / 人在回路</td><td>高</td><td><code>agentkit/state.py</code>、P3、P5</td></tr>
+<tr><td>MCP 与 Agent Skills（协议、权限、渐进式披露）</td><td>高（2026 新增权重）</td><td>P4</td></tr>
+<tr><td>评估与可观测（轨迹、指标、回归门禁）</td><td>高，且稀缺</td><td><code>agentkit/trace.py</code>、<code>agentkit/eval.py</code>、<code>evals/</code></td></tr>
+<tr><td>安全：提示注入、PII、最小权限、沙箱</td><td>高</td><td><code>agentkit/guard.py</code>、P2/P3/P4/P5</td></tr>
+<tr><td>成本 / 延迟 / 失败复盘</td><td>中高</td><td>trace 成本估算、<code>docs/INTERVIEW.md</code></td></tr>
+</tbody></table>
+<p>一个反复出现的判据：<strong>"能报出『92% 任务成功率、平均 3 次工具调用、$0.04/次』的项目，比一百行功能描述更有说服力"</strong>。这直接决定了本作品集必须自带 eval harness 与数值报告。</p>
+<h3 id="2-2-github-开源生态调研">2.2 GitHub / 开源生态调研</h3>
+<table><thead><tr><th>来源</th><th>关键发现</th><th>对本项目的用途</th></tr></thead><tbody>
+<tr><td><code>anthropics/skills</code></td><td>Agent Skills 开放标准：<code>SKILL.md</code> + YAML frontmatter；三阶段渐进式披露</td><td>P4 的 skill 包与 <code>skill_loader.py</code></td></tr>
+<tr><td><code>modelcontextprotocol/modelcontextprotocol</code></td><td>2026-07-28 规范：tools / resources / prompts、stdio 与 Streamable HTTP、授权与安全注意事项</td><td>P4 手写 server + RAG 语料主体</td></tr>
+<tr><td><code>PrefectHQ/fastmcp</code>、<code>modelcontextprotocol/python-sdk</code></td><td>官方/事实标准 SDK，装饰器式 API</td><td>P4 的可选生产适配器</td></tr>
+<tr><td><code>langchain-ai/deepagents</code> <code>examples/text-to-sql-agent</code></td><td>官方示例用 Chinook 数据库 + skills 渐进式披露</td><td>P2 选题与数据、RAG 语料</td></tr>
+<tr><td><code>huggingface/agents-course</code></td><td>Unit 1 公开 mdx 教程</td><td>RAG 语料</td></tr>
+<tr><td><code>qfc-network/ai-infra</code></td><td>Anthropic《Building Effective Agents》中英整理</td><td>RAG 语料 + 五种 workflow 模式的术语来源</td></tr>
+<tr><td><code>lerocha/chinook-database</code></td><td>开源 SQLite 样例库</td><td>P2 数据</td></tr>
+<tr><td>公开 <code>customer_support_tickets.csv</code> 的 GitHub 镜像</td><td>8469 条工单、含类型/优先级/状态/解决方案</td><td>P3 数据</td></tr>
+<tr><td><code>bernierllc/claude-skills</code> <code>agent_skills_spec.md</code></td><td>完整 frontmatter 字段规范</td><td>P4 skill 规范校验</td></tr>
+</tbody></table>
+<h3 id="2-3-环境约束与数据可得性">2.3 环境约束与数据可得性</h3>
+<p>实测本机环境（Windows / Python 3.13）：</p>
+<table><thead><tr><th>通道</th><th>结果</th><th>应对</th></tr></thead><tbody>
+<tr><td><code>api.github.com</code></td><td>HTTP 200 可用</td><td>通过 <strong>GitHub REST API</strong>（tree + git blob，base64）抓取全部真实数据</td></tr>
+<tr><td><code>raw.githubusercontent.com</code></td><td>超时</td><td>不走该通道</td></tr>
+<tr><td><code>huggingface.co</code></td><td>隧道 502 不可达</td><td>不依赖 HF 直链；改用 GitHub 上的开源语料与镜像</td></tr>
+<tr><td>PyPI</td><td>HTTP 200 可用</td><td>但<strong>核心依赖仍坚持零第三方库</strong>，保证任何环境离线可跑</td></tr>
+</tbody></table>
+<p>因此 <code>scripts/fetch_data.py</code> 用 tree API 一次列目录、blob API 逐文件下载，幂等可重跑（已下载文件跳过，规避 60 req/h 未认证限流）。所有抓取结果已随仓库落地，断网也能运行。</p>
+<h3 id="2-4-选题决策">2.4 选题决策</h3>
+<p>选定 5 个项目，覆盖不同能力维度且共享同一内核，避免"5 个互不相关的玩具"：</p>
+<table><thead><tr><th>#</th><th>项目</th><th>真实工作流</th><th>主打能力</th><th>开源数据</th></tr></thead><tbody>
+<tr><td>P1</td><td>RAG 深度调研 Agent</td><td>技术问题 → 多轮检索 → 带引用简报</td><td>混合检索 / 引用 / 检索评估</td><td>30 篇 MCP/Skills/Agent 官方文档</td></tr>
+<tr><td>P2</td><td>Text-to-SQL 自修复 Agent</td><td>自然语言 → SQL → 报错自修复 → 洞察 + 图表</td><td>工具契约 / 护栏 / 环境反馈修复</td><td>Chinook SQLite</td></tr>
+<tr><td>P3</td><td>多 Agent 工单协作</td><td>分诊 → 检索 → 起草 → 审核 → 风险 → 人工审批</td><td>状态机 / evaluator-optimizer / HITL</td><td>400 条工单（自 8469 条分层抽样）</td></tr>
+<tr><td>P4</td><td>MCP Server + Agent Skills</td><td>把上述能力暴露为标准工具与技能</td><td>协议 / 权限 / 渐进式披露</td><td>复用 P1–P3 数据</td></tr>
+<tr><td>P5</td><td>闲鱼 PPT 接单 Copilot</td><td>聊天导入 → 抽取 → 报价 → 人工确认 → brief/话术</td><td>边界判断 / 可解释定价 / HITL</td><td>合成聊天样例（明确标注）</td></tr>
+</tbody></table>
+<hr>
+<h2 id="3-总体架构">3. 总体架构</h2>
+<h3 id="3-1-分层">3.1 分层</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│  交付层  5 个 README · docs/TECHNICAL_REPORT.md · evals/report.html │
+├─────────────────────────────────────────────────────────────┤
+│  项目层  P1 research │ P2 sql │ P3 support │ P4 mcp+skills │ P5 order │
+├─────────────────────────────────────────────────────────────┤
+│  共享内核 agentkit（零第三方依赖）                              │
+│  llm · tools · loop · state · rag · guard · trace · eval       │
+├─────────────────────────────────────────────────────────────┤
+│  数据层  30 篇开源文档 / Chinook DB / 工单 CSV / 合成聊天样例     │
+│          scripts/fetch_data.py（可复现抓取）                    │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="3-2-共享内核-agentkit">3.2 共享内核 <code>agentkit</code></h3>
+<table><thead><tr><th>模块</th><th>职责</th><th>设计要点</th></tr></thead><tbody>
+<tr><td><code>llm.py</code></td><td>可插拔 LLM</td><td><code>BaseLLM.chat</code> 统一接口；<code>OpenAICompatibleLLM</code> 用 urllib 实现 function calling（DeepSeek/OpenAI/Ollama 通用）；<code>ScriptedLLM</code> 是确定性策略替身；<code>chat_json</code> 带一次修复重试</td></tr>
+<tr><td><code>tools.py</code></td><td>工具契约</td><td>函数签名 → JSON Schema；运行时校验 required/type/enum/未知字段；<code>permission</code> 白名单；<code>side_effect</code> 标记需审批；工具错误永不抛穿 agent loop</td></tr>
+<tr><td><code>loop.py</code></td><td>agent loop</td><td>手写 while 循环；<code>max_steps</code>/<code>max_tool_calls</code>/<code>max_total_tokens</code> 三层预算；重复调用检测并注入反思；错误回灌驱动自修复</td></tr>
+<tr><td><code>state.py</code></td><td>workflow graph</td><td>显式 state、条件边、终止节点、JSON checkpoint、<code>Interrupt</code> / <code>resume()</code>、Mermaid 导出</td></tr>
+<tr><td><code>rag.py</code></td><td>混合检索</td><td>heading-aware 分块、BM25 + TF-IDF、RRF 融合、MMR 去冗余、双语查询改写、引用、<code>recall@k</code>/MRR/nDCG</td></tr>
+<tr><td><code>guard.py</code></td><td>护栏</td><td>SQL 只读白名单、提示注入模式（中英）、PII 脱敏、风险分级、外部文本包装</td></tr>
+<tr><td><code>trace.py</code></td><td>可观测</td><td>span（llm/tool/node/gate）、参数、耗时、token、成本估算、JSON 轨迹 + Markdown 导出</td></tr>
+<tr><td><code>eval.py</code></td><td>评估</td><td>版本化任务集、数值指标、阈值回归门禁、零依赖 HTML 报告</td></tr>
+</tbody></table>
+<h3 id="3-3-两种运行模式-重要-避免误解">3.3 两种运行模式（重要，避免误解）</h3>
+<table><thead><tr><th>模式</th><th>触发</th><th>决策来源</th><th>用途</th></tr></thead><tbody>
+<tr><td><strong>离线确定性模式</strong>（默认）</td><td>无 <code>LLM_API_KEY</code></td><td><code>ScriptedLLM</code>：项目内可读的确定性策略代码</td><td>断网可跑、评测可复现、CI 门禁</td></tr>
+<tr><td><strong>真实 LLM 模式</strong></td><td>配置 <code>.env</code> 或 <code>--api</code></td><td>OpenAI 兼容端点（DeepSeek / OpenAI / Ollama）</td><td>真实生成、可对比同一套 eval</td></tr>
+</tbody></table>
+<p><strong>离线模式不是把结果硬编码</strong>：它照样走完整的 agent loop、调用真实工具、查询真实数据库/语料、产生真实 trace 与真实数值，只是把"下一步调哪个工具"写成确定性策略。这是标准的 test double / deterministic harness 做法；切换只需替换 <code>llm</code> 对象，loop 与工具完全不变。报告中所有数字均来自离线确定性模式，可逐位复现。</p>
+<h3 id="3-4-能力矩阵">3.4 能力矩阵</h3>
+<table><thead><tr><th>能力</th><th>P1</th><th>P2</th><th>P3</th><th>P4</th><th>P5</th></tr></thead><tbody>
+<tr><td>手写 agent loop</td><td>✓</td><td>✓</td><td></td><td></td><td></td></tr>
+<tr><td>工作流状态机 / HITL</td><td></td><td></td><td>✓</td><td></td><td>✓</td></tr>
+<tr><td>RAG + 引用 + 检索指标</td><td>✓</td><td></td><td>✓</td><td>✓</td><td></td></tr>
+<tr><td>工具调用 / JSON Schema</td><td>✓</td><td>✓</td><td></td><td>✓</td><td></td></tr>
+<tr><td>错误自修复</td><td></td><td>✓</td><td>✓</td><td></td><td></td></tr>
+<tr><td>护栏 / 注入防护 / PII</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>MCP / Agent Skills</td><td></td><td></td><td></td><td>✓</td><td></td></tr>
+<tr><td>多角色协作 / 审核回环</td><td></td><td></td><td>✓</td><td></td><td></td></tr>
+<tr><td>trace / eval / 回归门禁</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+</tbody></table>
+<hr>
+<h2 id="4-关键技术实现">4. 关键技术实现</h2>
+<h3 id="4-1-agent-loop-的三层预算与终止条件">4.1 Agent loop 的三层预算与终止条件</h3>
+<pre><code class="language-python">while steps &lt; cfg.max_steps:
+    response = llm.chat(messages, tools=schemas)
+    if not response.tool_calls: return response.text        # 自然终止
+    if tool_calls + len(response.tool_calls) &gt; cfg.max_tool_calls: -&gt; budget_exceeded
+    for call in response.tool_calls:
+        result = registry.call(call.name, call.arguments)   # 权限 + schema 校验
+        messages.append({&quot;role&quot;: &quot;tool&quot;, &quot;content&quot;: &quot;&lt;tool_output&gt;...&lt;/tool_output&gt;&quot;})
+    if repeated_identical_call: inject_reflection()
+    if tool_error: inject_recovery_instruction()
+return step_limit_exceeded                                   # 永不无限循环</code></pre>
+<p><code>max_steps=8~10</code>、<code>max_tool_calls=8~10</code>、<code>max_total_tokens=60k~80k</code> 三道闸门；工具输出统一包裹、截断到 6000 字符，明确当作 DATA。</p>
+<h3 id="4-2-工具契约与最小权限">4.2 工具契约与最小权限</h3>
+<p><code>ToolRegistry</code> 在调用点强制：<code>allowed_permissions</code>（默认只读）、<code>side_effect</code> 需 <code>allow_side_effect=True</code>（只有人工批准后才给）、参数校验失败返回结构化错误而非异常。P3 的 <code>send_reply</code> 与 P2 的 <code>query_sql</code> 是这套机制的两个极端示例。</p>
+<h3 id="4-3-混合检索与两个真实修复">4.3 混合检索与两个真实修复</h3>
+<p><strong>基线</strong>：30 篇文档 → 420 个 heading-aware chunk（900 字符 / 120 overlap）→ BM25 + TF-IDF 余弦 → RRF（<code>k=60</code>）融合 → MMR 去冗余（Jaccard &gt; 0.72 丢弃）→ 标题词重复加权。</p>
+<p><strong>问题 1 · 跨语言</strong>：语料以英文为主，用户常问中文。解决：<code>TERM_MAP</code> 领域双语词表做 query rewriting，把中文术语桥接成英文检索词（"授权"→authorization、"工具"→tools），并按查询语言调整桥接词权重。</p>
+<p><strong>问题 2 · 语言不平衡导致 IDF 偏置</strong>：只有 2/30 篇中文文档，中文单字 IDF 高达 <code>log(1+(420-2+0.5)/(2+0.5))≈5.1</code>，远超英文词，导致<strong>任何中文问题都被同一批中文文档霸榜</strong>。解决：对 CJK term 的 IDF 设上限 1.25（生产应换多语 embedding）。</p>
+<p><strong>消融实验</strong>（<code>scripts/rag_ablation.py</code>，10 个带 golden 的问题）：</p>
+<table><thead><tr><th>变体</th><th>recall@5</th><th>MRR</th><th>证据术语覆盖</th></tr></thead><tbody>
+<tr><td>A 无双语改写（IDF cap 开）</td><td>0.60</td><td>0.60</td><td>0.55</td></tr>
+<tr><td>B 上线配置：改写 + IDF cap</td><td><strong>0.80</strong></td><td><strong>0.80</strong></td><td><strong>0.85</strong></td></tr>
+<tr><td>C 改写开、IDF cap 关</td><td>0.70</td><td>0.70</td><td>0.70</td></tr>
+<tr><td><strong>B − A（改写贡献）</strong></td><td><strong>+0.20</strong></td><td>+0.20</td><td><strong>+0.30</strong></td></tr>
+<tr><td><strong>B − C（IDF 修复贡献）</strong></td><td><strong>+0.10</strong></td><td>+0.10</td><td>+0.15</td></tr>
+</tbody></table>
+<p>原始数据在 <code>evals/reports/rag_ablation.json</code>。</p>
+<h3 id="4-4-状态机-checkpoint-与人在回路">4.4 状态机、checkpoint 与人在回路</h3>
+<p><code>Graph</code> 把节点、条件边、终止节点显式建模；节点返回 <code>Interrupt</code> 时先 <code>state.update(patch)</code> 再写 JSON checkpoint，<strong>保证审批原因进入快照</strong>（这是实现中修过的一个真实 bug）。<code>resume(checkpoint, approved=True)</code> 从 <code>resume_node</code> 继续。P3 与 P5 都用它，且都可导出 Mermaid 图。</p>
+<h3 id="4-5-sql-护栏与环境反馈驱动的自修复">4.5 SQL 护栏与环境反馈驱动的自修复</h3>
+<ul><li>护栏：先剥注释与字符串字面量，再要求单条 <code>SELECT</code>/<code>WITH</code>；拒绝 DML/DDL/PRAGMA/ATTACH/多语句/<code>sqlite_master</code> 探测/危险函数；自动补 <code>LIMIT 500</code>；URI 只读连接。</li><li>自修复：注入"表名拼错"错误 → SQLite 返回真实 <code>no such table: Invoices</code> → 用第一轮缓存的<strong>全库 schema</strong> 做 <code>difflib</code> 模糊匹配 → 重写 SQL → 重试。该机制泛化到任意表/列名错误，不是"第二次硬编码正确答案"。</li></ul>
+<h3 id="4-6-mcp-协议与-agent-skills">4.6 MCP 协议与 Agent Skills</h3>
+<ul><li><code>server.py</code>：零依赖 JSON-RPC 2.0 over stdio，实现 <code>initialize</code>（capability negotiation，协议版本 2026-07-28）、<code>ping</code>、tools/list+call、resources/list+read、prompts/list+get、未知方法 <code>-32601</code>。工具输出用 <code>&lt;tool_output&gt;</code> 包裹；参数做注入检测并写 <code>_security_note</code>。</li><li><code>client.py</code>：<strong>启动真实子进程</strong>完成握手，用协议互通验证服务端，而不是自测函数。</li><li><code>server_fastmcp.py</code>：官方 SDK 等价实现（可选依赖）。</li><li>3 个符合规范的 SKILL.md（frontmatter 含 name/description/version/license/metadata/allowed-tools，name 与目录名一致），<code>skill_loader.py</code> 实现三阶段渐进式披露并量化：Discovery 仅 797 字符，全部加载需 7,524 字符，激活 1 个技能后上下文节省 <strong>47%–61%</strong>。</li></ul>
+<h3 id="4-7-轨迹与成本">4.7 轨迹与成本</h3>
+<p>每次 LLM / tool / node / gate 调用都是 span，记录输入、输出、耗时、token、状态；<code>Tracer</code> 汇总 <code>llm_calls / tool_calls / tool_errors / tokens / est_cost_usd / blocked</code>，落盘 <code>runs/*.json</code>。示例：P1 单次调研（<code>MCP 授权流程和安全注意事项</code>）6 次 LLM 调用、5 次工具调用、11,955 tokens（in 11,385 / out 570）、约 $0.003427、12.5 ms（离线模式成本为按 token 的估算值，非真实账单）。</p>
+<h3 id="4-8-评估与回归门禁">4.8 评估与回归门禁</h3>
+<p><code>EvalSuite</code> 读取版本化 <code>eval_set.json</code>，逐 case 产出数值指标，聚合后与阈值比较；任一指标低于阈值则门禁 FAIL。<code>evals/run_all.py</code> 一次跑完 5 个 suite，生成 <code>evals/report.html</code>（零依赖深色主题）与 <code>report.json</code>，并以退出码表示是否可"发布"。</p>
+<hr>
+<h2 id="5-数据-来源与许可">5. 数据、来源与许可</h2>
+<p>所有外部数据由 <code>scripts/fetch_data.py</code> 从 GitHub REST API 抓取，落地在 <code>data/</code>，每篇文档头部保留原始 URL。详见 <code>docs/DATA_SOURCES.md</code> 与 <code>data/SOURCES.md</code>。</p>
+<table><thead><tr><th>数据</th><th>规模</th><th>来源</th><th>用途</th></tr></thead><tbody>
+<tr><td>技术文档语料</td><td>30 篇 / 420 chunks / 205,374 字符</td><td>MCP 官方规范 2026-07-28、Agent Skills 规范、Anthropic《Building Effective Agents》中英整理、HF Agents Course、deepagents 示例文档</td><td>P1 / P4 RAG</td></tr>
+<tr><td>Chinook SQLite</td><td>11 表 / 412 发票 / 3,503 曲目 / 1.0 MB</td><td><code>lerocha/chinook-database</code></td><td>P2 / P4 SQL</td></tr>
+<tr><td>客服工单</td><td>400 条分层抽样（源 8,469 条），其中 126 条已解决</td><td>公开 <code>customer_support_tickets.csv</code> 的 GitHub 镜像</td><td>P3 知识库与评测</td></tr>
+<tr><td>5 份 SOP</td><td>项目内编写</td><td>明确标注<strong>非开源数据</strong></td><td>P3 检索依据</td></tr>
+<tr><td>PPT 接单聊天</td><td>10 段合成对话</td><td><strong>项目内合成，明确标注</strong></td><td>P5 流程演示</td></tr>
+</tbody></table>
+<p><strong>诚实边界</strong>：工单数据集是合成数据（类型与正文主题基本不相关、Resolution 为占位文本），只用于验证流程/护栏/评测管线，不得据此得出业务语义结论；PPT 聊天样例同样是合成数据，不含任何真实客户信息。生产替换方案写在各项目 README 的「数据说明」里。</p>
+<hr>
+<h2 id="6-实测结果">6. 实测结果</h2>
+<h3 id="6-1-总览">6.1 总览</h3>
+<pre><code>python evals/run_all.py   →  gate = PASS
+TOTAL 53/55 cases passed · 5/5 suites gate PASS · smoke test 23/23</code></pre>
+<p>2 个未通过 case 位于 P1 且为<strong>故意保留的困难案例</strong>（见 6.3），门禁阈值按工程实际设定，未通过数据美化消除。</p>
+<h3 id="6-2-各项目指标">6.2 各项目指标</h3>
+<table><thead><tr><th>项目</th><th>cases</th><th>关键指标（实测）</th></tr></thead><tbody>
+<tr><td>P1 RAG 深度调研</td><td>8/10</td><td>recall@5 <strong>0.80</strong> · MRR <strong>0.80</strong> · groundedness <strong>0.9826</strong> · 证据术语覆盖 0.85 · citation_rate 0.80 · completion 1.00 · 平均 5.0 次工具调用</td></tr>
+<tr><td>P2 Text-to-SQL</td><td>10/10</td><td>执行成功率 1.00 · 结果正确率 1.00 · <strong>自修复率 1.00</strong>（3 个注入错误用例）· 护栏拦截率 1.00（2 个对抗）· LIMIT 强制率 1.00 · 平均 4.2 次工具调用</td></tr>
+<tr><td>P3 工单协作</td><td>10/10</td><td>路由准确率 1.00 · 升级判定准确率 1.00 · PII 清洁率 1.00 · 审核修复率 1.00 · 证据率 1.00 · 轨迹完整率 1.00</td></tr>
+<tr><td>P4 MCP + Skills</td><td>15/15</td><td>协议合规率 1.00 · 工具 schema 合规 1.00 · 工具执行 1.00 · 护栏/注入检测 1.00 · skill 路由 1.00 · <strong>上下文节省 0.6057</strong></td></tr>
+<tr><td>P5 接单 Copilot</td><td>10/10</td><td>任务分类 1.00 · 页数抽取 1.00 · 价格区间与钳制 1.00 · 报价可复现 1.00 · 缺失信息追问 1.00 · <strong>金额人工审批率 1.00</strong> · 修改加价正确 1.00</td></tr>
+</tbody></table>
+<p>真实价格样例（P5）：演讲稿 20 页 + 图表 = <strong>¥49</strong>；初版优化 12 页 = <strong>¥18</strong>；纯视觉 8 页 = <strong>¥11</strong>；急单 30 页 + 动画 → 上限钳制 <strong>¥60</strong>；纯视觉 5 页 → 下限钳制 <strong>¥10</strong>。</p>
+<p>真实 SQL 结果样例（P2）：按国家收入 Top1 = USA / 523.06；最畅销艺人 = Iron Maiden / 138.60；平均发票 = 5.65 / 412 张。</p>
+<h3 id="6-3-失败案例与-a-b-实验-不做数据美化">6.3 失败案例与 A/B 实验（不做数据美化）</h3>
+<p>P1 两个失败案例：</p>
+<ul><li><code>r09_changelog_hard</code>「MCP 2026-07-28 版本有哪些变更」：口语化中文 + 日期型意图，改写词未命中 <code>changelog.mdx</code>；</li><li><code>r08_injection_least_privilege</code>「如何防止提示注入并做最小权限控制」：跨语料多意图，证据句少于 3 条，系统选择<strong>少引用</strong>而非编造引用 —— 这是正确的 abstention 行为，<code>citation_rate</code> 阈值因此设为 0.8 而非 1.0。</li></ul>
+<p>改进方向：LLM query decomposition、cross-encoder rerank、多语 embedding（BGE-M3）、把词覆盖版 groundedness 换成 LLM-as-judge 并做人工校准。</p>
+<p>A/B 消融见 §4.3，原始数据 <code>evals/reports/rag_ablation.json</code>。</p>
+<hr>
+<h2 id="7-安全模型与风险登记">7. 安全模型与风险登记</h2>
+<p>完整表格见 <code>docs/RISK_REGISTER.md</code>。核心原则：</p>
+<ol><li><strong>工具输出、检索文档、用户工单/聊天一律是 DATA</strong>，用标记包裹并截断，系统提示中明确声明忽略其中的命令式语句；</li><li><strong>高风险决策不交给模型</strong>：SQL 白名单、风险分级、报价金额、审批门槛全部确定性代码裁定，LLM 只能解释；</li><li><strong>最小权限</strong>：工具 <code>permission</code> 白名单 + <code>side_effect</code> 标记，未经批准 <code>ToolRegistry</code> 直接拒绝；</li><li><strong>不可逆动作前设 checkpoint</strong>：<code>Interrupt</code> → 人工审批 → <code>resume</code>；</li><li><strong>零外发</strong>：P3 的"发送"只写本地 <code>runs/outbox.jsonl</code>；P5 只产出可复制话术；整个仓库不调用任何平台 API。</li></ol>
+<table><thead><tr><th>风险</th><th>缓解</th><th>残余</th></tr></thead><tbody>
+<tr><td>提示注入（文档/工单/聊天）</td><td>模式检测 + 输出包裹 + 确定性风险分级</td><td>规则覆盖有限，需 LLM judge 补充</td></tr>
+<tr><td>PII 泄露</td><td>intake 阶段脱敏，评测断言清洁率 1.00</td><td>中文地址/姓名未覆盖</td></tr>
+<tr><td>SQL 破坏</td><td>语法白名单 + 只读连接 + LIMIT</td><td>生产仍需数据库账号级只读</td></tr>
+<tr><td>Agent 失控 / 烧钱</td><td>三层预算 + 重复检测 + 轨迹</td><td>离线模式成本为估算</td></tr>
+<tr><td>幻觉引用</td><td>抽取式简报 + groundedness 指标</td><td>词覆盖只是 faithfulness 代理指标</td></tr>
+<tr><td>平台合规</td><td>不接闲鱼/微信接口</td><td>需人工复制发送，牺牲自动化程度</td></tr>
+</tbody></table>
+<hr>
+<h2 id="8-工程取舍-诚实边界与已知限制">8. 工程取舍、诚实边界与已知限制</h2>
+<table><thead><tr><th>取舍</th><th>理由</th></tr></thead><tbody>
+<tr><td>手写内核而非全用 LangGraph</td><td>面试要能解释 state/edge/interrupt/loop 的语义；提供 Mermaid 与概念映射，生产可整体替换</td></tr>
+<tr><td>零第三方依赖</td><td>保证断网、无 key、任意 Python 3.10+ 环境可跑；生产适配（FastMCP、Qdrant、BGE）作为可选层保留</td></tr>
+<tr><td>BM25+TF-IDF 而非向量库</td><td>420 chunks 规模下足够且完全可解释；<code>HybridRetriever</code> 接口按可替换设计</td></tr>
+<tr><td>离线 <code>ScriptedLLM</code></td><td>可复现评测/CI；绝不冒充"模型智能"，真实模式随时可切</td></tr>
+<tr><td>2 个失败 case 保留</td><td>展示失败分析与阈值设定能力，比 100% 通过更可信</td></tr>
+<tr><td>合成数据明确标注</td><td>避免把流程演示包装成业务结论</td></tr>
+</tbody></table>
+<p><strong>已知限制</strong>：P1 检索在中文口语化/多意图问题上仍有 20% 未命中；P2 离线 NL→SQL 是关键词模板，不覆盖嵌套/时间窗口；P3 数据集语义质量有限、checkpoint 单文件无并发隔离；P4 只实现 stdio，未实现 Streamable HTTP / OAuth / tasks；P5 需求抽取是中文规则引擎，未覆盖还价、取消、重复下单。</p>
+<hr>
+<h2 id="9-复现指南">9. 复现指南</h2>
+<pre><code class="language-bash">cd agent-portfolio
+
+# 0) 零依赖，Python 3.10+ 即可
+python -m compileall -q agentkit projects evals scripts
+
+# 1) 重新抓取真实开源数据（可选，仓库已内置快照）
+python scripts/fetch_data.py
+
+# 2) 五个项目各跑一次
+python projects/p1_research_agent/run_demo.py &quot;MCP 授权流程和安全注意事项&quot; --save
+python projects/p2_sql_agent/run_demo.py &quot;按国家统计总收入&quot; --inject-error --save
+python projects/p3_support_swarm/run_demo.py --risk            # 人工审批闭环
+python projects/p4_mcp_and_skills/run_demo.py --save
+python projects/p5_ppt_order_copilot/run_demo.py --chat c01_speech_to_ppt --save
+
+# 3) 全量评测 + 回归门禁 + HTML 报告
+python evals/run_all.py
+
+# 4) 端到端冒烟
+python tests/smoke_test.py
+
+# 5) RAG 消融实验
+python scripts/rag_ablation.py
+
+# 6) 生成本报告的可展示 HTML（带目录导航 / 门禁快照 / 打印样式）
+python scripts/build_report_html.py
+
+# 7) 接真实模型（DeepSeek / OpenAI / Ollama 均可）
+cp .env.example .env      # 填 LLM_API_KEY / LLM_BASE_URL / LLM_MODEL
+python projects/p1_research_agent/run_demo.py --api &quot;workflow 和 agent 的区别&quot;
+python evals/run_all.py   # 同一套评测对比真实模型</code></pre>
+<p>不需要 <code>pip install</code>（可选依赖见 <code>requirements.txt</code>）。报告产物：<code>docs/TECHNICAL_REPORT.html</code>、<code>evals/report.html</code>、<code>evals/report.json</code>、<code>evals/reports/*.md</code>、<code>evals/reports/*.svg</code>、<code>runs/*.json</code>。</p>
+<hr>
+<h2 id="10-面试叙事">10. 面试叙事</h2>
+<p><strong>30 秒总版</strong>："我做了一套 5 个项目的 Agent 工程作品集，共享一个手写的零依赖内核：agent loop、工具契约、状态机、混合检索、护栏、轨迹和评估。三个真实工作流（带引用调研、SQL 自修复、工单多人协同），一个手写 MCP Server + Agent Skills，还有一个来自我自己副业的人机协同接单 Copilot。全部离线可跑，55 个评测用例有 53 个通过，两个失败案例我保留下来讲失败分析。"</p>
+<p><strong>5 分钟版</strong>与<strong>高频追问</strong>的完整话术见 <code>docs/INTERVIEW.md</code>；每个项目 README 末尾也有该项目的 30 秒 / 5 分钟 / 追问三档讲法。</p>
+<p><strong>一句话数字</strong>（建议背下来）：</p>
+<blockquote>"recall@5 = 0.80（消融前 0.60），结论 groundedness = 0.98，平均 5 次工具调用/次，约 $0.0035/次；SQL 自修复率 100%，护栏拦截率 100%，金额审批覆盖率 100%，渐进式披露省掉约 60% 上下文。"</blockquote>
+<hr>
+<h2 id="11-后续工作">11. 后续工作</h2>
+<ol><li>接入真实 LLM 跑同一套 eval，产出"离线策略 vs 真实模型"对比表；</li><li>P1 增加 query decomposition 与 cross-encoder rerank，目标 recall@5 ≥ 0.9；</li><li>P3 引入 LangGraph 适配层与 Langfuse/OTel 导出，验证概念可迁移；</li><li>P4 补 Streamable HTTP + OAuth + <code>resources/subscribe</code>；</li><li>P5 换真实聊天导出（脱敏后）并用 <code>chat_json</code> 替换规则抽取，保留确定性校验层；</li><li>增加并发/多租户隔离与 checkpoint 存储后端。</li></ol>
+<hr>
+<h2 id="附录-a-目录结构">附录 A · 目录结构</h2>
+<pre><code>agent-portfolio/
+├── README.md                     作品集总览 + 能力矩阵 + 快速开始
+├── docs/
+│   ├── FEATURES.md                功能说明：5 个项目输入/动作/产物 + 真实示例
+│   ├── TECHNICAL_REPORT.md        本文件（源文件）
+│   ├── TECHNICAL_REPORT.html      自包含可展示版（build_report_html.py 生成）
+│   ├── ARCHITECTURE.md            架构、数据流、框架替换映射
+│   ├── DATA_SOURCES.md            数据来源、许可证、诚实边界
+│   ├── INTERVIEW.md               面试讲法与高频追问
+│   └── RISK_REGISTER.md           权限、护栏、失败模式、回滚
+├── agentkit/                      共享内核（8 个模块）
+├── data/                          真实开源数据 + SOURCES.md
+├── scripts/fetch_data.py          可复现数据抓取
+├── scripts/rag_ablation.py        检索消融实验
+├── projects/p1_research_agent/    P1
+├── projects/p2_sql_agent/         P2
+├── projects/p3_support_swarm/     P3
+├── projects/p4_mcp_and_skills/    P4（含 3 个 SKILL.md）
+├── projects/p5_ppt_order_copilot/ P5
+├── evals/run_all.py               评测门禁
+├── evals/report.html / .json      评测报告
+├── tests/smoke_test.py            端到端冒烟
+└── runs/                          轨迹 / checkpoint / outbox</code></pre>
+<h2 id="附录-b-指标定义">附录 B · 指标定义</h2>
+<table><thead><tr><th>指标</th><th>定义</th></tr></thead><tbody>
+<tr><td>recall@5</td><td>首轮 top-5 检索结果中包含 golden 文档的问题占比</td></tr>
+<tr><td>MRR</td><td>首个正确文档排名倒数的均值</td></tr>
+<tr><td>groundedness</td><td>结论句词元被检索证据覆盖的比例（faithfulness 的词覆盖代理指标）</td></tr>
+<tr><td>self_repair_rate</td><td>注入错误后能依据环境报错自动重写并成功执行的比例</td></tr>
+<tr><td>guard_block_rate</td><td>危险 SQL / 注入请求被拦截且未执行的比例</td></tr>
+<tr><td>escalation_precision</td><td>应升级人工的升级、不应升级的不升级的比例</td></tr>
+<tr><td>context_saved_ratio</td><td>1 −（Discovery 目录 + 已激活技能正文）/（全部技能正文）</td></tr>
+<tr><td>completion_rate</td><td>在预算内正常终止（非 step_limit / error）的比例</td></tr>
+<tr><td>case_pass_rate</td><td>单 suite 内满足全部验收条件的用例占比</td></tr>
+</tbody></table>
+<footer>agent-portfolio v1.0.0 · 2026-11-10 · 所有数字可由
+ <code>python evals/run_all.py</code> 与 <code>python tests/smoke_test.py</code> 复现 ·
+ Markdown 为源文件，本页为展示产物</footer>
+</main></div></body></html>

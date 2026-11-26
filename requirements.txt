@@ -1,0 +1,42 @@
+# ============================================================================
+# agent-portfolio — dependencies
+# ============================================================================
+# The CORE of this repository has ZERO third-party dependencies.
+# Everything (agent loop, tool schemas, workflow graph, BM25/TF-IDF retrieval,
+# SQL guardrails, JSON-RPC MCP server, tracing, eval harness, HTML/SVG reports)
+# is implemented with the Python standard library only.
+#
+#   Python >= 3.10
+#   pip install -r requirements.txt     # installs PPT writer and durable agent graph
+#   python evals/run_all.py             # gate = PASS, 53/55 cases
+#   python tests/smoke_test.py          # 23/23 checks
+#
+# ----------------------------------------------------------------------------
+# OPTIONAL — production adapters only. Uncomment what you actually need.
+# The active dependencies at the bottom power the multi-agent PPT workflow.
+# ----------------------------------------------------------------------------
+# MCP official/ecosystem SDK adapter used by
+#   projects/p4_mcp_and_skills/server_fastmcp.py
+# (server.py is the zero-dependency reference implementation)
+# fastmcp>=2.0
+#
+# Vector / multilingual retrieval replacement for agentkit.rag.HybridRetriever
+# sentence-transformers>=3.0
+# qdrant-client>=1.9
+#
+# Reranking / LLM-as-judge upgrade path described in TECHNICAL_REPORT.md §6.3
+# openai>=1.0
+#
+# Observability export for agentkit.trace.Tracer
+# opentelemetry-api>=1.25
+# opentelemetry-sdk>=1.25
+#
+# Graph execution engine replacement for agentkit.state.Graph
+# langgraph>=0.2
+#
+# NOTE: OpenAI-compatible LLM calls in agentkit/llm.py use `urllib.request`
+# from the standard library, so even the real-LLM mode needs no `openai` package.
+python-pptx>=1.0.2
+langgraph>=1.2,<2
+langgraph-checkpoint-sqlite>=3,<4
+# ============================================================================
